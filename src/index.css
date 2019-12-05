@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  color: white;
+  background-color: #D7B7BB;
   font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
