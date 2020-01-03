@@ -1,11 +1,15 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import './Main.scss';
 
-export const Main = (props: any) => {
+interface MainProps {
+    children: ReactNode;
+}
+
+export const Main = ({children}: MainProps) => {
     return (
-        <main>
-            <div className={'container'}>
-                {props.children}
+        <main className={'main'}>
+            <div className={'main__container'}>
+                {children}
             </div>
         </main>
     );

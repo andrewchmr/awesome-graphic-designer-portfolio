@@ -4,7 +4,7 @@
   background-color: $primary-color;
   position: fixed;
   width: 100%;
-  height: 72px;
+  height: $header-height-mobile;
   z-index: 3;
 
   &__nav-sub {
@@ -121,9 +121,9 @@
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint-tablet) {
   .header {
-    height: 92px;
+    height: $header-height-desktop;
 
     &__logo {
       left: 50%;

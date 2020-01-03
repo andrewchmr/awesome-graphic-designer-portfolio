@@ -10,9 +10,9 @@ enum Tab {
 export const Header = () => {
     const [activeTab, setActiveTab] = useState(Tab.WORK);
 
-    function getClassNameForTab(tab: Tab): string {
+    const getClassNameForTab = (tab: Tab): string => {
         return `header__tab ${activeTab === tab && 'header__tab--active'}`;
-    }
+    };
 
     return <header className="header">
         <nav>

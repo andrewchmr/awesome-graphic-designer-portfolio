@@ -1,31 +1,27 @@
-main {
+@import "../../variables";
+
+.main {
   position: relative;
-  padding-top: 70px;
-}
+  padding-top: $header-height-mobile;
 
-@media (min-width: 768px) {
-  main{
-    padding-top: 92px
+  &__container {
+    margin: 0 auto;
+    max-width: 100%;
+
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
   }
 }
 
-.container {
-  padding: 0 64px;
-  margin: 0 auto;
-  max-width: 100%;
-}
-.container:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-@media (max-width: 1460px) {
-  .container {
-    padding: 0 48px;
-  }
-}
-@media (max-width: 767px) {
-  .container {
-    padding: 0 24px;
+@media (min-width: $breakpoint-tablet) {
+  .main {
+    padding-top: $header-height-desktop;
+
+    &__container {
+      padding: 0 64px;
+    }
   }
 }
