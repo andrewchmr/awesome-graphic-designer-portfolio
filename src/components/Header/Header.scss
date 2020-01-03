@@ -1,6 +1,6 @@
 @import "../../variables";
 
-.header {
+.Header {
   background-color: $primary-color;
   position: fixed;
   width: 100%;
@@ -97,24 +97,24 @@
   &__menu-button {
     display: none;
 
-    &:checked ~ .header__nav-sub {
+    &:checked ~ .Header__nav-sub {
       max-height: 240px;
     }
 
-    &:checked ~ .header__menu-icon span {
+    &:checked ~ .Header__menu-icon span {
       background: transparent;
     }
 
-    &:checked ~ .header__menu-icon span:before {
+    &:checked ~ .Header__menu-icon span:before {
       transform: rotate(-45deg);
     }
 
-    &:checked ~ .header__menu-icon span:after {
+    &:checked ~ .Header__menu-icon span:after {
       transform: rotate(45deg);
     }
 
-    &:checked ~ .header__menu-icon:not(.steps) span:before,
-    &:checked ~ .header__menu-icon:not(.steps) span:after {
+    &:checked ~ .Header__menu-icon:not(.steps) span:before,
+    &:checked ~ .Header__menu-icon:not(.steps) span:after {
       top: 0;
     }
   }
@@ -122,7 +122,7 @@
 }
 
 @media (min-width: $breakpoint-tablet) {
-  .header {
+  .Header {
     height: $header-height-desktop;
 
     &__logo {

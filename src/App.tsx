@@ -8,7 +8,7 @@ import {
     Route,
 } from "react-router-dom";
 import {About} from "./components/About/About";
-import {WorkItems} from "./components/WorkItems/WorkItems";
+import {WorkItemList} from "./components/WorkItemList/WorkItemList";
 
 const App: React.FC = () => {
     return (
@@ -17,10 +17,10 @@ const App: React.FC = () => {
             <Main>
                 <Switch>
                     <Route path="/work">
-                        <WorkItems/>
+                        <WorkItemList/>
                     </Route>
                     <Route exact path="/">
-                        <WorkItems/>
+                        <WorkItemList/>
                     </Route>
                     <Route path="/about">
                         <About/>

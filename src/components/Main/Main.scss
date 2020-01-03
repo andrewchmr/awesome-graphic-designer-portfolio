@@ -1,6 +1,6 @@
 @import "../../variables";
 
-.main {
+.Main {
   position: relative;
   padding-top: $header-height-mobile;
 
@@ -17,7 +17,7 @@
 }
 
 @media (min-width: $breakpoint-tablet) {
-  .main {
+  .Main {
     padding-top: $header-height-desktop;
 
     &__container {

@@ -2,7 +2,7 @@ import React from "react";
 import './About.scss';
 
 export const About = () => {
-    return <div className={'about'}>
+    return <div className={'About'}>
         <div>
             <p>Vernal Bloom is a Ukrainian artist based in Poland</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur distinctio iste nemo! Accusantium

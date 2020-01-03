@@ -11,15 +11,15 @@ export const Header = () => {
     const [activeTab, setActiveTab] = useState(Tab.WORK);
 
     const getClassNameForTab = (tab: Tab): string => {
-        return `header__tab ${activeTab === tab && 'header__tab--active'}`;
+        return `Header__tab ${activeTab === tab && 'Header__tab--active'}`;
     };
 
-    return <header className="header">
+    return <header className="Header">
         <nav>
-            <input className="header__menu-button" type="checkbox" id="menu-button"/>
-            <label className="header__menu-icon" htmlFor="menu-button"><span/></label>
-            <ul className="header__nav-sub">
-                <Link onClick={() => setActiveTab(Tab.WORK)} className="header__logo" style={{zIndex: 1000}}
+            <input className="Header__menu-button" type="checkbox" id="menu-button"/>
+            <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>
+            <ul className="Header__nav-sub">
+                <Link onClick={() => setActiveTab(Tab.WORK)} className="Header__logo" style={{zIndex: 1000}}
                       to={'/'}/>
                 <li className={getClassNameForTab(Tab.WORK)}>
                     <Link onClick={() => setActiveTab(Tab.WORK)} to={'/'}>Work</Link>

@@ -1,0 +1,59 @@
+@import "../../variables";
+
+.WorkItem {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 54px;
+  text-align: center;
+  padding-bottom: 3px;
+
+  & a {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__desc {
+    font-size: 16px;
+    text-transform: none;
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
+  &__image-wrap {
+    box-shadow: 0 2px 6px 0 rgba(35, 31, 32, 0.24);
+  }
+}
+
+@media (max-width: $header-height-desktop - 1) {
+  .WorkItem {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 0;
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: $breakpoint-desktop - 1) {
+  .WorkItem {
+    margin-top: 32px;
+
+    &__desc {
+      font-size: 14px;
+      padding: 0 20px;
+      margin-top: 12px;
+    }
+  }
+}
+
