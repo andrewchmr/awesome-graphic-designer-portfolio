@@ -3,6 +3,7 @@
 .Main {
   position: relative;
   padding-top: $header-height-mobile;
+  min-height: calc(100vh - 220px);
 
   &__container {
     margin: 0 auto;
