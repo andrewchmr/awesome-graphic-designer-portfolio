@@ -5,13 +5,7 @@ import {WorkItemModal} from "../WorkItemModal/WorkItemModal";
 import './WorkItemList.scss';
 import {toSeoUrl} from "../../utils/toSeoUrl";
 
-interface WorkItemProps {
-    id: number
-    fileName: string,
-    imageName: string
-}
-
-const mockWorkItems: WorkItemProps[] = [
+const mockWorkItems: WorkItem[] = [
     {
         id: 0,
         fileName: 'portrait-of-desi-perkins',
@@ -110,7 +104,7 @@ export const WorkItemList = () => {
     };
 
     return <section className="WorkItemList">
-        {mockWorkItems.map((workItem: WorkItemProps) =>
+        {mockWorkItems.map((workItem: WorkItem) =>
             <WorkItem key={workItem.id} onClick={() => setSelectedItemId(workItem)} workItem={workItem}/>)}
         <Switch><Route path={`/work/:fileName`} children={showWorkItemModal()}/></Switch>
     </section>

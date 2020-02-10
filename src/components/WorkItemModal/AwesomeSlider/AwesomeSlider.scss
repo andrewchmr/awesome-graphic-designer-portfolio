@@ -1,0 +1,51 @@
+@import "../../../variables";
+
+.awssld {
+  --content-background-color: #D7B7BB !important;
+}
+
+.awssld__controls {
+  --organic-arrow-color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .awssld__controls {
+    visibility: hidden !important;
+  }
+}
+
+.awssld__startUp{
+  background-color: $primary-color !important;
+}
+
+.awssld__bullets {
+  bottom: 25px !important;
+  z-index: 10 !important;
+}
+
+.awssld__bullets button {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: white !important;
+}
+
+@media (max-width: $breakpoint-tablet - 1) {
+  .awssld__startUp img {
+    width: 100% !important;
+  }
+}
+
+.aws-btn {
+  --slider-height-percentage: 60%;
+  --slider-transition-duration: 575ms;
+  --organic-arrow-thickness: 4px;
+  --organic-arrow-border-radius: 0px;
+  --organic-arrow-height: 40px;
+  --control-button-width: -10%;
+  --control-button-height: 25%;
+  --control-button-background: transparent;
+  --control-bullet-color: #ffffff;
+  --control-bullet-active-color: #ffffff;
+  --loader-bar-color: #851515;
+  --loader-bar-height: 6px;
+}

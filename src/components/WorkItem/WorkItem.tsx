@@ -3,7 +3,7 @@ import './WorkItem.scss';
 import {Link} from "react-router-dom";
 import {toSeoUrl} from "../../utils/toSeoUrl";
 
-interface WorkItem {
+export interface WorkItem {
     id: number,
     fileName: string,
     imageName: string
