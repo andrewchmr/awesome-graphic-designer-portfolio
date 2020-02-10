@@ -1,2 +1,18 @@
+@import "../../variables";
+
 .About {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 18px;
+  padding: 20px;
+
+  &__email {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: 54px;
+    font-size: 25px;
+  }
 }
