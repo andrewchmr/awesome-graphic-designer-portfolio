@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import {About} from "./components/About/About";
 import {WorkItemList} from "./components/WorkItemList/WorkItemList";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 const App: React.FC = () => {
     return (
@@ -24,6 +25,9 @@ const App: React.FC = () => {
                     </Route>
                     <Route path="/about">
                         <About/>
+                    </Route>
+                    <Route path="*">
+                       <NoMatch/>
                     </Route>
                 </Switch>
             </Main>

@@ -1,0 +1,68 @@
+@import "./variables.scss";
+
+body {
+  margin: 0;
+  color: white;
+  background-color: #D7B7BB;
+  overflow-y: scroll;
+  font-family: Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.modal--open {
+  overflow-y: hidden;
+  transition: max-height 0.5s ease-out;
+  position: fixed;
+}
+
+.awssld {
+  --content-background-color: #D7B7BB !important;
+}
+
+.awssld__controls {
+  --organic-arrow-color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .awssld__controls {
+    visibility: hidden !important;
+  }
+}
+
+.awssld__startUp{
+  background-color: #4D4D4D !important;
+}
+
+.awssld__bullets {
+  bottom: 25px !important;
+  z-index: 10 !important;
+}
+
+.awssld__bullets button {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: white !important;
+}
+
+@media (max-width: $breakpoint-tablet - 1) {
+  .awssld__startUp img {
+    width: 100% !important;
+  }
+}
+
+.aws-btn {
+  --slider-height-percentage: 60%;
+  --slider-transition-duration: 575ms;
+  --organic-arrow-thickness: 4px;
+  --organic-arrow-border-radius: 0px;
+  --organic-arrow-height: 40px;
+  --control-button-width: -10%;
+  --control-button-height: 25%;
+  --control-button-background: transparent;
+  --control-bullet-color: #f33d42;
+  --control-bullet-active-color: #cf3438;
+  --loader-bar-color: #851515;
+  --loader-bar-height: 6px;
+}
+
