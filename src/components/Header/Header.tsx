@@ -19,8 +19,7 @@ export const Header = () => {
             <input className="Header__menu-button" type="checkbox" id="menu-button"/>
             <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>
             <ul className="Header__nav-sub">
-                <Link onClick={() => setActiveTab(Tab.WORK)} className="Header__logo" style={{zIndex: 1000}}
-                      to={'/'}/>
+                <Link onClick={() => setActiveTab(Tab.WORK)} className="Header__logo" to={'/'}/>
                 <li className={getClassNameForTab(Tab.WORK)}>
                     <Link onClick={() => setActiveTab(Tab.WORK)} to={'/'}>Work</Link>
                 </li>
