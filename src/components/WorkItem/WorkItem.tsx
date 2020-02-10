@@ -1,31 +1,26 @@
 import React from "react";
 import './WorkItem.scss';
 import {Link} from "react-router-dom";
+import {toSeoUrl} from "../../utils/toSeoUrl";
 
-interface WorkItemProps {
+interface WorkItem {
+    id: number,
     fileName: string,
     imageName: string
 }
 
-export const WorkItem = ({imageName, fileName}: WorkItemProps) => {
+interface WorkItemProps {
+    workItem: WorkItem,
+    onClick: (item: WorkItem) => void
+}
 
-    const toSeoUrl = (url: string): string => {
-        return url.toString()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/\s+/g, '-')
-            .toLowerCase()
-            .replace(/&/g, '-and-')
-            .replace(/[^a-z0-9\-]/g, '')
-            .replace(/-+/g, '-')
-            .replace(/^-*/, '')
-            .replace(/-*$/, '');
-    };
-
+export const WorkItem = ({workItem, onClick}: WorkItemProps) => {
     return <div className="WorkItem">
-        <Link className={'WorkItem__image-wrap'} to={`/work/${toSeoUrl(imageName)}`}>
-            <img className={'WorkItem__image'} src={require(`../../images/${fileName}`)} alt={imageName}/>
+        <Link className={'WorkItem__image-wrap'} onClick={() => onClick(workItem)}
+              to={`/work/${toSeoUrl(workItem.imageName)}`}>
+            <img className={'WorkItem__image'} src={require(`../../images/${workItem.fileName}-sm.jpg`)}
+                 alt={workItem.imageName}/>
         </Link>
-        <h2 className={'WorkItem__desc'}>{imageName}</h2>
+        <h2 className={'WorkItem__desc'}>{workItem.imageName}</h2>
     </div>
 };
