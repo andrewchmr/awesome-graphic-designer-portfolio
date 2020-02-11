@@ -46,7 +46,9 @@ export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
                     <div key={workItem.id}>
-                        <img className={'WorkItemModal__image'} src={require(`../../images/${workItem.fileName}.jpg`)}/>
+                        <img className={'WorkItemModal__image'}
+                             src={require(`../../images/${workItem.fileName}.jpg`)}
+                             alt={`Vernal Bloom - ${workItem.imageName}`}/>
                         <h1 className={'WorkItemModal__image-title'}>{workItemList[workItem.id].imageName}</h1>
                     </div>)}
             </AwesomeSlider>
