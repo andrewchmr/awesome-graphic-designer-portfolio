@@ -86,26 +86,25 @@ export const WorkItemList = () => {
         const url = window.location.pathname;
         const fileName = url.substring(url.lastIndexOf('/') + 1);
 
-        let item;
-        mockWorkItems.forEach((workItem, id) => {
+        let item = mockWorkItems[0];
+        mockWorkItems.forEach((workItem) => {
             if (toSeoUrl(workItem.imageName) === fileName) {
                 item = workItem
             }
         });
 
-        // TODO: NoMatch if item is not found
         return item;
-    };
-
-    const showWorkItemModal = () => {
-        return <WorkItemModal
-            workItemList={mockWorkItems}
-            workItem={selectedItemId || getItemByFileName()}/>
     };
 
     return <section className="WorkItemList">
         {mockWorkItems.map((workItem: WorkItem) =>
             <WorkItem key={workItem.id} onClick={() => setSelectedItemId(workItem)} workItem={workItem}/>)}
-        <Switch><Route path={`/work/:fileName`} children={showWorkItemModal()}/></Switch>
+        <Switch>
+            <Route path={`/work/:fileName`}>
+                <WorkItemModal
+                    workItemList={mockWorkItems}
+                    workItem={selectedItemId || getItemByFileName()}/>
+            </Route>
+        </Switch>
     </section>
 };
