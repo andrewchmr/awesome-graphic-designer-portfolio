@@ -3,12 +3,22 @@ import './Header.scss';
 import {Link} from "react-router-dom";
 
 enum Tab {
-    WORK,
-    ABOUT
+    WORK = '/',
+    ABOUT = '/about'
 }
 
+const getTabByUrl = () => {
+    const path = window.location.pathname;
+    if (path.match('^\\/work[a-zA-Z]*')) {
+        return Tab.WORK;
+    } else if (path.match('^\\/about[a-zA-Z]*')) {
+        return Tab.ABOUT;
+    }
+    return path;
+};
+
 export const Header = () => {
-    const [activeTab, setActiveTab] = useState(Tab.WORK);
+    const [activeTab, setActiveTab] = useState(getTabByUrl());
 
     const getClassNameForTab = (tab: Tab): string => {
         return `Header__tab ${activeTab === tab && 'Header__tab--active'}`;
