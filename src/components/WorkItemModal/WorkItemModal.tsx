@@ -32,7 +32,7 @@ export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
 
         const showStartUpScreen = () => {
             return <div>
-                <img src={require(`../../logo.svg`)}/>
+                <img src={require(`../../logo.svg`)} alt={'Vernal Bloom logo'}/>
             </div>
         };
 

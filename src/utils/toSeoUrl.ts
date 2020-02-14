@@ -5,7 +5,7 @@ export const toSeoUrl = (url: string): string => {
         .replace(/\s+/g, '-')
         .toLowerCase()
         .replace(/&/g, '-and-')
-        .replace(/[^a-z0-9\-]/g, '')
+        .replace(/[^a-z0-9-]/g, '')
         .replace(/-+/g, '-')
         .replace(/^-*/, '')
         .replace(/-*$/, '');
