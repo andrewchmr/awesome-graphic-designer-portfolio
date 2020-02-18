@@ -40,24 +40,24 @@
     width: 100%;
     text-align: center;
 
-    & a {
-      color: $primary-color;
-      width: 100%;
-      font-size: 14px;
-      line-height: 24px;
-      display: inline-block;
-      letter-spacing: 4px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      text-decoration: none;
-    }
+  }
 
-    &--active a {
+  &__link {
+    color: $primary-color;
+    width: 100%;
+    font-size: 14px;
+    line-height: 24px;
+    display: inline-block;
+    letter-spacing: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+
+    &--active {
       color: #fff;
       width: 100%;
       background-color: $secondary-color;
     }
-
   }
 
   &__menu-icon {
@@ -144,17 +144,17 @@
       clear: none;
       float: right;
       max-height: none;
-
-      & a {
-        color: white;
-      }
     }
 
     &__tab {
       padding: 0 120px;
       width: initial;
+    }
 
-      &--active a {
+    &__link {
+      color: white;
+
+      &--active {
         background-color: inherit;
       }
 
