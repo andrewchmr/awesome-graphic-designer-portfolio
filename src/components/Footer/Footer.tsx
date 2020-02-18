@@ -4,7 +4,7 @@ import '../../fontello-f8a6cfaf/css/fontello.css';
 
 export const Footer = () => {
     return <footer className='Footer'>
-        <ul className="Footer__content">
+        <ul className="Footer__social-icons">
             <li><a href="https://www.facebook.com/kristina.chychkovska" target="_blank" rel="noopener noreferrer">
                 <i className="icon-facebook-official"/></a></li>
             <li><a href="https://www.instagram.com/kristinychh/" target="_blank" rel="noopener noreferrer">
