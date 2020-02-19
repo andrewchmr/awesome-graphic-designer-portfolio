@@ -21,11 +21,13 @@ interface WorkItemModalProps {
 export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
         const history = useHistory();
         useBodyClass(`modal--open`);
-        const awesomeSlider: any = useRef();
+        const awesomeSlider = useRef<AwesomeSlider>(null);
 
         const updateUrl = () => {
-            const index = awesomeSlider.current.state.index;
-            history.push(`/work/${toSeoUrl(workItemList[index].imageName)}`);
+            if (awesomeSlider && awesomeSlider.current) {
+                const index = awesomeSlider.current.state.index;
+                history.push(`/work/${toSeoUrl(workItemList[index].imageName)}`);
+            }
         };
 
         const isAwesomeSliderLoaded = () => awesomeSlider.current && awesomeSlider.current.state.index !== undefined;
