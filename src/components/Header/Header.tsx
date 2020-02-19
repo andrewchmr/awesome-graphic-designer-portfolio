@@ -1,9 +1,37 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import './Header.scss';
 import {NavLink} from "react-router-dom";
 
+const isScrolledToBottom = () => {
+    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+};
+
+const isScrolledToTop = () => {
+    return window.scrollY <= 0;
+};
+
 export const Header = () => {
+    const pageYOffset = window.pageYOffset;
+    const [positionY, setPositionY] = useState(pageYOffset);
+    const [visible, setVisible] = useState(true);
     const menuButton = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (isScrolledToBottom()) {
+                setVisible(false);
+            } else if (isScrolledToTop()) {
+                setVisible(true)
+            } else {
+                setVisible(positionY > pageYOffset);
+            }
+            setPositionY(pageYOffset);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return (() => {
+            window.removeEventListener("scroll", handleScroll);
+        })
+    });
 
     const hideMobileMenuNav = () => {
         if (menuButton && menuButton.current) {
@@ -11,7 +39,7 @@ export const Header = () => {
         }
     };
 
-    return <header className="Header">
+    return <header className={`Header ${visible ? '' : 'Header--hidden'}`}>
         <nav>
             <input className="Header__menu-button" ref={menuButton} type="checkbox" id="menu-button"/>
             <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>

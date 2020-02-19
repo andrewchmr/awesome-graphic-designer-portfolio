@@ -6,6 +6,12 @@
   width: 100%;
   height: $header-height-mobile;
   z-index: 3;
+  will-change: transform;
+  transition: transform 300ms ease;
+
+  &--hidden{
+    transform: translateY(-100%);
+  }
 
   &__nav-sub {
     clear: both;
