@@ -1,25 +1,19 @@
 @import "../../variables";
 
 .Main {
-  position: relative;
   padding-top: $header-height-mobile;
-  min-height: calc(100vh - 220px);
+  min-height: calc(100vh - 280px);
 
   &__container {
     margin: 0 auto;
     max-width: 100%;
-
-    &:after {
-      content: '';
-      display: table;
-      clear: both;
-    }
   }
 }
 
 @media (min-width: $breakpoint-tablet) {
   .Main {
     padding-top: $header-height-desktop;
+    min-height: calc(100vh - 220px);
 
     &__container {
       padding: 0 64px;

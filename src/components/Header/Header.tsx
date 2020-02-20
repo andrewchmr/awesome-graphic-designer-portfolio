@@ -18,7 +18,9 @@ export const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (isScrolledToBottom()) {
+            if (isScrolledToTop() && isScrolledToTop()) {
+                setVisible(true);
+            } else if (isScrolledToBottom()) {
                 setVisible(false);
             } else if (isScrolledToTop()) {
                 setVisible(true)
