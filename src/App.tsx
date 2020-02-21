@@ -10,6 +10,7 @@ import {
 import {About} from "./components/About/About";
 import {WorkItemList} from "./components/WorkItemList/WorkItemList";
 import NoMatch from "./components/NoMatch/NoMatch";
+import {Helmet} from "react-helmet";
 
 const App: React.FC = () => {
     return (
@@ -21,13 +22,22 @@ const App: React.FC = () => {
                         <WorkItemList/>
                     </Route>
                     <Route exact path="/">
+                        <Helmet>
+                            <title>Vernal Bloom</title>
+                        </Helmet>
                         <WorkItemList/>
                     </Route>
                     <Route path="/about">
+                        <Helmet>
+                            <title>About — Vernal Bloom</title>
+                        </Helmet>
                         <About/>
                     </Route>
                     <Route path="*">
-                       <NoMatch/>
+                        <Helmet>
+                            <title>Page not found — Vernal Bloom</title>
+                        </Helmet>
+                        <NoMatch/>
                     </Route>
                 </Switch>
             </Main>

@@ -12,6 +12,7 @@ import AwesomeSlider from 'react-awesome-slider';
 import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
 import {WorkItem} from "../WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
+import {Helmet} from "react-helmet";
 
 interface WorkItemModalProps {
     workItem: WorkItem;
@@ -39,6 +40,9 @@ export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
         };
 
         return <div className="WorkItemModal">
+            <Helmet>
+                <title>{workItem.imageName} — Vernal Bloom</title>
+            </Helmet>
             <AwesomeSlider startupScreen={showStartUpScreen()}
                            ref={awesomeSlider}
                            selected={workItem.id}

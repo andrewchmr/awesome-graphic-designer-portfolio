@@ -25,7 +25,7 @@ export const Header = () => {
         }
     };
 
-    return <header className={`Header ${visible ? '' : 'Header--hidden'}`}>
+    return <header className={`Header${visible ? '' : ' Header--hidden'}`}>
         <nav>
             <input className="Header__menu-button" ref={menuButton} type="checkbox" id="menu-button"/>
             <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>
