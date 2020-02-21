@@ -2,37 +2,21 @@ import React, {useEffect, useRef, useState} from "react";
 import './Header.scss';
 import {NavLink} from "react-router-dom";
 
-const isScrolledToBottom = () => {
-    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-};
-
-const isScrolledToTop = () => {
-    return window.scrollY <= 0;
-};
+const isScrolledToTop = () => window.scrollY <= 0;
 
 export const Header = () => {
-    const pageYOffset = window.pageYOffset;
+    const {scrollTop: pageYOffset} = document.documentElement || document.body;
     const [positionY, setPositionY] = useState(pageYOffset);
     const [visible, setVisible] = useState(true);
     const menuButton = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (isScrolledToTop() && isScrolledToTop()) {
-                setVisible(true);
-            } else if (isScrolledToBottom()) {
-                setVisible(false);
-            } else if (isScrolledToTop()) {
-                setVisible(true)
-            } else {
-                setVisible(positionY > pageYOffset);
-            }
+            setVisible(isScrolledToTop() ? true : positionY > pageYOffset);
             setPositionY(pageYOffset);
         };
         window.addEventListener("scroll", handleScroll);
-        return (() => {
-            window.removeEventListener("scroll", handleScroll);
-        })
+        return (() => window.removeEventListener("scroll", handleScroll));
     });
 
     const hideMobileMenuNav = () => {

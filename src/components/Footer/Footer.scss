@@ -2,9 +2,8 @@
 
 .Footer {
   text-align: center;
-  bottom: 0;
-  width: 100%;
-  margin-bottom: 50px;
+  padding-bottom: 30px;
+  flex-shrink: 0;
 
   &__copyright {
     margin-top: 20px;
