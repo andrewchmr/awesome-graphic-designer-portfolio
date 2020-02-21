@@ -39,9 +39,17 @@ export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
             </div>
         };
 
+        const getTitle = () => {
+            if(isAwesomeSliderLoaded()){
+                return `${workItemList[awesomeSlider.current.state.index].imageName} — Vernal Bloom`;
+            } else {
+                return 'Vernal Bloom';
+            }
+        };
+
         return <div className="WorkItemModal">
             <Helmet>
-                <title>{workItem.imageName} — Vernal Bloom</title>
+                <title>{getTitle()}</title>
             </Helmet>
             <AwesomeSlider startupScreen={showStartUpScreen()}
                            ref={awesomeSlider}
