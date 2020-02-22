@@ -1,11 +1,7 @@
 @import "../../variables";
 
 .WorkItem {
-  padding-left: 40px;
-  padding-right: 40px;
-  margin-top: 54px;
   text-align: center;
-  padding-bottom: 3px;
 
   & a {
     cursor: pointer;
@@ -16,13 +12,37 @@
     overflow: hidden;
   }
 
+  &__desc-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: rgba(216, 189, 193, 1);
+  }
+
   &__desc {
+    width: 95%;
+    letter-spacing: 4px;
+    text-transform: uppercase;
     font-size: 16px;
-    text-transform: none;
-    margin-top: 20px;
-    margin-bottom: 0;
-    padding: 0 20px;
-    position: relative;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 100;
+    line-height: 24px;
+
+    &:after {
+      content: " \A ─";
+      white-space: pre;
+    }
   }
 
   &__image {
@@ -36,24 +56,10 @@
   }
 }
 
-@media (max-width: $header-height-desktop - 1) {
+@media (min-width: $breakpoint-desktop) {
   .WorkItem {
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-bottom: 0;
-    margin-top: 48px;
-  }
-}
-
-@media (max-width: $breakpoint-desktop - 1) {
-  .WorkItem {
-    margin-top: 32px;
-
-    &__desc {
-      font-size: 14px;
-      padding: 0 20px;
-      margin-top: 12px;
+    &__image-wrap:hover &__desc-overlay {
+      opacity: 1;
     }
   }
 }
-

@@ -13,9 +13,11 @@
 @media (min-width: $breakpoint-tablet) {
   .Main {
     padding-top: $header-height-desktop;
+  }
+}
 
-    &__container {
-      padding: 0 64px;
-    }
+@media (min-width: $breakpoint-desktop) {
+  .Main {
+    padding-top: $header-height-desktop;
   }
 }

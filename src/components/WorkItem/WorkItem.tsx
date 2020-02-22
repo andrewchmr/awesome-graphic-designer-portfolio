@@ -21,7 +21,9 @@ export const WorkItem = ({workItem, onClick}: WorkItemProps) => {
             <img className={'WorkItem__image'}
                  src={require(`../../images/${workItem.fileName}-sm.jpg`)}
                  alt={`Vernal Bloom - ${workItem.imageName}`}/>
+            <div className={'WorkItem__desc-overlay'}>
+                <div className={'WorkItem__desc'}>{workItem.imageName}</div>
+            </div>
         </Link>
-        <h2 className={'WorkItem__desc'}>{workItem.imageName}</h2>
     </div>
 };
