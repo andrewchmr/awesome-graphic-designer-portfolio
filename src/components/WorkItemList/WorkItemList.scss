@@ -17,8 +17,8 @@
 
 @media (min-width: $breakpoint-tablet-landscape) {
   .WorkItemList {
-    grid-gap: 40px;
-    padding: 40px;
+    grid-gap: 30px;
+    padding: 30px;
     grid-template-columns: repeat(4, 1fr);
   }
 }
