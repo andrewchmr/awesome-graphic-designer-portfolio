@@ -97,7 +97,7 @@ export const WorkItemList = () => {
 
     return <section className="WorkItemList">
         {mockWorkItems.map((workItem: WorkItem) =>
-            <WorkItem key={workItem.id} workItem={workItem}/>)}
+            <WorkItem key={workItem.id} {...workItem}/>)}
         <Switch>
             <Route path={`/work/:fileName`}>
                 <WorkItemModal

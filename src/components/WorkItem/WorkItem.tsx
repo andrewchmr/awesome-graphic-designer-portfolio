@@ -9,16 +9,12 @@ export interface WorkItem {
     imageName: string
 }
 
-interface WorkItemProps {
-    workItem: WorkItem,
-}
-
-export const WorkItem = ({workItem}: WorkItemProps) => {
+export const WorkItem = ({id, fileName, imageName}: WorkItem) => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
     const showDescOverlay = () => {
         return <div className={'WorkItem__desc-overlay'}>
-            <div className={'WorkItem__desc'}>{workItem.imageName}</div>
+            <div className={'WorkItem__desc'}>{imageName}</div>
         </div>;
     };
 
@@ -28,10 +24,10 @@ export const WorkItem = ({workItem}: WorkItemProps) => {
 
     return <div className="WorkItem">
         <Link className={'WorkItem__image-wrap'}
-              to={`/work/${toSeoUrl(workItem.imageName)}`}>
+              to={`/work/${toSeoUrl(imageName)}`}>
             <img className={'WorkItem__image'} onLoad={() => setImageLoaded(true)}
-                 src={require(`../../images/${workItem.fileName}-sm.jpg`)}
-                 alt={`Vernal Bloom - ${workItem.imageName}`}/>
+                 src={require(`../../images/${fileName}-sm.jpg`)}
+                 alt={`Vernal Bloom - ${imageName}`}/>
             {imageLoaded && showDescOverlay()}
             {!imageLoaded && showPlaceholder()}
         </Link>
