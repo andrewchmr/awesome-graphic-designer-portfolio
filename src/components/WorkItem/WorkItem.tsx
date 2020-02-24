@@ -11,10 +11,9 @@ export interface WorkItem {
 
 interface WorkItemProps {
     workItem: WorkItem,
-    onClick: (item: WorkItem) => void
 }
 
-export const WorkItem = ({workItem, onClick}: WorkItemProps) => {
+export const WorkItem = ({workItem}: WorkItemProps) => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
     const showDescOverlay = () => {
@@ -28,7 +27,7 @@ export const WorkItem = ({workItem, onClick}: WorkItemProps) => {
     };
 
     return <div className="WorkItem">
-        <Link className={'WorkItem__image-wrap'} onClick={() => onClick(workItem)}
+        <Link className={'WorkItem__image-wrap'}
               to={`/work/${toSeoUrl(workItem.imageName)}`}>
             <img className={'WorkItem__image'} onLoad={() => setImageLoaded(true)}
                  src={require(`../../images/${workItem.fileName}-sm.jpg`)}

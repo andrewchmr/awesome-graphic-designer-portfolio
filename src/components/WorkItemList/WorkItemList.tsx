@@ -1,5 +1,5 @@
 import {WorkItem} from "../WorkItem/WorkItem";
-import React, {useState} from "react";
+import React from "react";
 import {Route, Switch} from "react-router";
 import {WorkItemModal} from "../WorkItemModal/WorkItemModal";
 import './WorkItemList.scss';
@@ -80,9 +80,8 @@ const mockWorkItems: WorkItem[] = [
 ];
 
 export const WorkItemList = () => {
-    const [selectedItemId, setSelectedItemId] = useState();
 
-    const getItemByFileName = () => {
+    const getItemByFileName = (): WorkItem => {
         const url = window.location.pathname;
         const fileName = url.substring(url.lastIndexOf('/') + 1);
 
@@ -98,12 +97,12 @@ export const WorkItemList = () => {
 
     return <section className="WorkItemList">
         {mockWorkItems.map((workItem: WorkItem) =>
-            <WorkItem key={workItem.id} onClick={() => setSelectedItemId(workItem)} workItem={workItem}/>)}
+            <WorkItem key={workItem.id} workItem={workItem}/>)}
         <Switch>
             <Route path={`/work/:fileName`}>
                 <WorkItemModal
                     workItemList={mockWorkItems}
-                    workItem={selectedItemId || getItemByFileName()}/>
+                    workItem={getItemByFileName()}/>
             </Route>
         </Switch>
     </section>
