@@ -25,6 +25,11 @@
     background-color: rgba(216, 189, 193, 1);
   }
 
+  &__placeholder {
+    @extend .WorkItem__desc-overlay;
+    opacity: 1;
+  }
+
   &__desc {
     width: 95%;
     letter-spacing: 4px;
