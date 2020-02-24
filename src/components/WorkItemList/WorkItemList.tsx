@@ -8,8 +8,8 @@ import {toSeoUrl} from "../../utils/toSeoUrl";
 const mockWorkItems: WorkItem[] = [
     {
         id: 0,
-        fileName: 'anyuta',
-        imageName: 'Anyuta',
+        fileName: 'tropical',
+        imageName: 'Tropical',
     },
     {
         id: 1,
