@@ -6,7 +6,6 @@ import 'react-awesome-slider/dist/styles.css';
 import {toSeoUrl} from "../../utils/toSeoUrl";
 import {CloseButton} from "./CloseButton/CloseButton";
 import {useRef} from "react";
-// @ts-ignore
 import AwesomeSlider from 'react-awesome-slider';
 // @ts-ignore
 import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
@@ -19,10 +18,16 @@ interface WorkItemModalProps {
     workItemList: WorkItem[];
 }
 
+interface IAwesomeSlider extends AwesomeSlider {
+    state: {
+        index: number
+    }
+}
+
 export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
         const history = useHistory();
         useBodyClass(`modal--open`);
-        const awesomeSlider = useRef<AwesomeSlider>(null);
+        const awesomeSlider = useRef<IAwesomeSlider>(null);
 
         const updateUrl = () => {
             if (awesomeSlider && awesomeSlider.current) {
@@ -40,7 +45,7 @@ export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
         };
 
         const getTitle = () => {
-            if(isAwesomeSliderLoaded()){
+            if (isAwesomeSliderLoaded() && awesomeSlider.current) {
                 return `${workItemList[awesomeSlider.current.state.index].imageName} — Vernal Bloom`;
             } else {
                 return 'Vernal Bloom';

@@ -17,7 +17,7 @@ interface WorkItemProps {
 export const WorkItem = ({workItem, onClick}: WorkItemProps) => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-    const showImageOverlay = () => {
+    const showDescOverlay = () => {
         return <div className={'WorkItem__desc-overlay'}>
             <div className={'WorkItem__desc'}>{workItem.imageName}</div>
         </div>;
@@ -33,7 +33,7 @@ export const WorkItem = ({workItem, onClick}: WorkItemProps) => {
             <img className={'WorkItem__image'} onLoad={() => setImageLoaded(true)}
                  src={require(`../../images/${workItem.fileName}-sm.jpg`)}
                  alt={`Vernal Bloom - ${workItem.imageName}`}/>
-            {imageLoaded && showImageOverlay()}
+            {imageLoaded && showDescOverlay()}
             {!imageLoaded && showPlaceholder()}
         </Link>
     </div>
