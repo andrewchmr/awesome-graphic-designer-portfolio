@@ -2,6 +2,7 @@
 
 .awssld {
   --content-background-color: #D7B7BB !important;
+  --slider-transition-duration: 1000ms !important;
 }
 
 .awssld__controls {
@@ -14,7 +15,7 @@
   }
 }
 
-.awssld__startUp{
+.awssld__startUp {
   background-color: $primary-color !important;
 }
 
@@ -37,7 +38,6 @@
 
 .aws-btn {
   --slider-height-percentage: 60%;
-  --slider-transition-duration: 575ms;
   --organic-arrow-thickness: 4px;
   --organic-arrow-border-radius: 0px;
   --organic-arrow-height: 40px;

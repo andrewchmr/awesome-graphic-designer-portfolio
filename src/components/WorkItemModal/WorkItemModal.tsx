@@ -5,16 +5,17 @@ import useBodyClass from "../../utils/useBodyClass";
 import 'react-awesome-slider/dist/styles.css';
 import {toSeoUrl} from "../../utils/toSeoUrl";
 import {CloseButton} from "./CloseButton/CloseButton";
-import {useRef} from "react";
+import {useRef, useState} from "react";
 import AwesomeSlider from 'react-awesome-slider';
 // @ts-ignore
 import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
 import {WorkItem} from "../WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
+import {WorkItemBig} from "./WorkItemBig";
 
 interface WorkItemModalProps {
-    workItem: WorkItem;
+    initialWorkItem: WorkItem;
     workItemList: WorkItem[];
 }
 
@@ -24,16 +25,16 @@ interface IAwesomeSlider extends AwesomeSlider {
     }
 }
 
-export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
+export const WorkItemModal = ({initialWorkItem, workItemList}: WorkItemModalProps) => {
         const history = useHistory();
         useBodyClass(`modal--open`);
         const awesomeSlider = useRef<IAwesomeSlider>(null);
+        const [title, setTitle] = useState('Vernal Bloom');
 
-        const updateUrl = () => {
-            if (awesomeSlider && awesomeSlider.current) {
-                const index = awesomeSlider.current.state.index;
-                history.push(`/work/${toSeoUrl(workItemList[index].imageName)}`);
-            }
+        const handleTransitionEnd = ({currentIndex}: { currentIndex: number }) => {
+            const imageName = workItemList[currentIndex].imageName;
+            history.push(`/work/${toSeoUrl(imageName)}`);
+            setTitle(`${imageName} — Vernal Bloom`);
         };
 
         const isAwesomeSliderLoaded = () => awesomeSlider.current && awesomeSlider.current.state.index !== undefined;
@@ -44,32 +45,24 @@ export const WorkItemModal = ({workItem, workItemList}: WorkItemModalProps) => {
             </div>
         };
 
-        const getTitle = () => {
-            if (isAwesomeSliderLoaded() && awesomeSlider.current) {
-                return `${workItemList[awesomeSlider.current.state.index].imageName} — Vernal Bloom`;
-            } else {
-                return 'Vernal Bloom';
-            }
-        };
-
         return <div className="WorkItemModal">
             <Helmet>
-                <title>{getTitle()}</title>
+                <title>{title}</title>
             </Helmet>
             <AwesomeSlider startupScreen={showStartUpScreen()}
                            ref={awesomeSlider}
-                           selected={workItem.id}
+                           selected={initialWorkItem.id}
                            fillParent={true}
                            bullets={!!(isAwesomeSliderLoaded())}
-                           onTransitionEnd={updateUrl}
+                           onTransitionEnd={handleTransitionEnd}
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
                     <div key={workItem.id}>
-                        <img className={'WorkItemModal__image'}
-                             src={require(`../../images/${workItem.fileName}.jpg`)}
-                             alt={`Vernal Bloom - ${workItem.imageName}`}/>
-                        <h1 className={'WorkItemModal__image-title'}>{workItemList[workItem.id].imageName}</h1>
-                    </div>)}
+                        <WorkItemBig id={workItem.id}
+                                     fileName={workItemList[workItem.id].fileName}
+                                     imageName={workItemList[workItem.id].imageName}/>
+                    </div>
+                )}
             </AwesomeSlider>
             {isAwesomeSliderLoaded() && <CloseButton/>}
         </div>

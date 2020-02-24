@@ -8,72 +8,77 @@ import {toSeoUrl} from "../../utils/toSeoUrl";
 const mockWorkItems: WorkItem[] = [
     {
         id: 0,
+        fileName: 'anyuta',
+        imageName: 'Anyuta',
+    },
+    {
+        id: 1,
         fileName: 'portrait-of-desi-perkins',
         imageName: 'Portrait Of Desi Perkins',
     },
     {
-        id: 1,
+        id: 2,
         fileName: 'portrait-of-vika',
         imageName: 'Portrait Of Vika',
     },
     {
-        id: 2,
+        id: 3,
         fileName: 'portrait-of-nastya',
         imageName: 'Portrait Of Nastya',
     },
     {
-        id: 3,
+        id: 4,
         fileName: 'andrew-profile-logo',
         imageName: 'Andrew Profile Logo',
     },
     {
-        id: 4,
+        id: 5,
         fileName: 'i-love-to-feel',
         imageName: 'I Love To Feel',
     },
     {
-        id: 5,
+        id: 6,
         fileName: 'doberman-lover',
         imageName: 'Doberman Lover',
     },
     {
-        id: 6,
+        id: 7,
         fileName: 'portrait-of-zhenya',
         imageName: 'Portrait Of Zhenya',
     },
     {
-        id: 7,
+        id: 8,
         fileName: 'crystal',
         imageName: 'Crystal',
     },
     {
-        id: 8,
+        id: 9,
         fileName: 'girl-illustration',
         imageName: 'Girl Illustration',
     },
     {
-        id: 9,
+        id: 10,
         fileName: 'leon-maison-margiela-SS20',
         imageName: 'Leon, Maison Margiela SS20',
     },
     {
-        id: 10,
+        id: 11,
         fileName: 'music-album-poster',
         imageName: 'Music Album Poster',
     },
     {
-        id: 11,
+        id: 12,
         fileName: 'portrait-of-kate',
         imageName: 'Portrait Of Kate',
     },
     {
-        id: 12,
+        id: 13,
         fileName: 'portrait-of-lera',
         imageName: 'Portrait Of Lera',
     },
 
     {
-        id: 13,
+        id: 14,
         fileName: 'portrait-of-valeria',
         imageName: 'Portrait Of Valeria',
     },
@@ -102,7 +107,7 @@ export const WorkItemList = () => {
             <Route path={`/work/:fileName`}>
                 <WorkItemModal
                     workItemList={mockWorkItems}
-                    workItem={getItemByFileName()}/>
+                    initialWorkItem={getItemByFileName()}/>
             </Route>
         </Switch>
     </section>
