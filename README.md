@@ -1,3 +1,3 @@
 # Portfolio website for Vernal Bloom
 
-## Demo: https://vernal-bloom.com/
+## Website: https://vernal-bloom.com/
