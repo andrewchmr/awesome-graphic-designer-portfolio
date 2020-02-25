@@ -56,8 +56,9 @@ export const WorkItemModal = ({initialWorkItem, workItemList}: WorkItemModalProp
                            onTransitionEnd={handleTransitionEnd}
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
-                    <div key={workItem.id} data-src={require(`../../images/${workItemList[workItem.id].fileName}.jpg`)}>
-                        <h1 className={'WorkItemModal__image-title'}>{workItemList[workItem.id].imageName}</h1>
+                    <div key={workItem.id} data-alt={`Vernal Bloom - ${workItem.imageName}`}
+                         data-src={require(`../../images/${workItem.fileName}.jpg`)}>
+                        <h1 className={'WorkItemModal__image-title'}>{workItem.imageName}</h1>
                     </div>
                 )}
             </AwesomeSlider>
