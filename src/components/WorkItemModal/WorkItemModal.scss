@@ -45,3 +45,13 @@
     }
   }
 }
+
+.awssld__content{
+  flex-direction: column;
+}
+
+.awssld__content > img{
+  width: auto !important;
+  position: relative !important;
+  @extend .WorkItemModal__image;
+}

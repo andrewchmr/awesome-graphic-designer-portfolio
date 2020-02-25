@@ -12,7 +12,6 @@ import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
 import {WorkItem} from "../WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
-import {WorkItemBig} from "./WorkItemBig";
 
 interface WorkItemModalProps {
     initialWorkItem: WorkItem;
@@ -57,10 +56,8 @@ export const WorkItemModal = ({initialWorkItem, workItemList}: WorkItemModalProp
                            onTransitionEnd={handleTransitionEnd}
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
-                    <div key={workItem.id}>
-                        <WorkItemBig id={workItem.id}
-                                     fileName={workItemList[workItem.id].fileName}
-                                     imageName={workItemList[workItem.id].imageName}/>
+                    <div key={workItem.id} data-src={require(`../../images/${workItemList[workItem.id].fileName}.jpg`)}>
+                        <h1 className={'WorkItemModal__image-title'}>{workItemList[workItem.id].imageName}</h1>
                     </div>
                 )}
             </AwesomeSlider>

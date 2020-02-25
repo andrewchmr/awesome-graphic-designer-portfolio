@@ -2,7 +2,8 @@
 
 .awssld {
   --content-background-color: #D7B7BB !important;
-  --slider-transition-duration: 1000ms !important;
+  --slider-transition-duration: 770ms !important;
+  --loader-bar-color: #AA8C90 !important;
 }
 
 .awssld__controls {
@@ -17,6 +18,7 @@
 
 .awssld__startUp {
   background-color: $primary-color !important;
+  z-index: 1000;
 }
 
 .awssld__bullets {
@@ -46,6 +48,5 @@
   --control-button-background: transparent;
   --control-bullet-color: #ffffff;
   --control-bullet-active-color: #ffffff;
-  --loader-bar-color: #851515;
   --loader-bar-height: 6px;
 }
