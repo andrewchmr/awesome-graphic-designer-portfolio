@@ -26,16 +26,17 @@
   }
 
   &__logo {
+    display: block;
+    left: 50%;
     position: absolute;
+    transform: translateX(-50%);
     background: url("../../logo.svg") no-repeat;
     background-size: 100% 100%;
     background-position: center;
-    left: 50%;
-    top: -25px;
     z-index: 1000;
-    margin-left: -65px;
-    width: 125px;
-    height: 125px;
+    top: 12px;
+    width: 47px;
+    height: 47px;
   }
 
   &__tab {
@@ -135,11 +136,9 @@
     height: $header-height-desktop;
 
     &__logo {
-      left: 50%;
-      top: -30px;
-      margin-left: -75px;
-      width: 150px;
-      height: 150px;
+      top: 17px;
+      width: 55px;
+      height: 55px;
     }
 
     &__nav-sub {

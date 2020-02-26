@@ -19,6 +19,16 @@
 .awssld__startUp {
   background-color: $primary-color !important;
   z-index: 1000;
+
+  & img {
+    width: 100px;
+
+    @media (min-width: $breakpoint-tablet) {
+      & {
+        width: 200px;
+      }
+    }
+  }
 }
 
 .awssld__bullets {
@@ -30,12 +40,6 @@
   width: 8px !important;
   height: 8px !important;
   background-color: white !important;
-}
-
-@media (max-width: $breakpoint-tablet - 1) {
-  .awssld__startUp img {
-    width: 100% !important;
-  }
 }
 
 .aws-btn {
