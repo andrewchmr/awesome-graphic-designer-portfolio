@@ -10,7 +10,7 @@
   --organic-arrow-color: #ffffff;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: $breakpoint-tablet-landscape - 1) {
   .awssld__controls {
     visibility: hidden !important;
   }
