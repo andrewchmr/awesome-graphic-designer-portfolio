@@ -5,26 +5,20 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(2, 1fr);
-}
 
-@media (min-width: $breakpoint-tablet) {
-  .WorkItemList {
+  @media (min-width: $breakpoint-tablet) {
     grid-gap: 20px;
     padding: 20px;
     grid-template-columns: repeat(3, 1fr);
   }
-}
 
-@media (min-width: $breakpoint-tablet-landscape) {
-  .WorkItemList {
+  @media (min-width: $breakpoint-tablet-landscape) {
     grid-gap: 30px;
     padding: 30px;
     grid-template-columns: repeat(4, 1fr);
   }
-}
 
-@media (min-width: $breakpoint-desktop) {
-  .WorkItemList {
+  @media (min-width: $breakpoint-desktop) {
     grid-gap: 40px;
     padding: 40px;
     grid-template-columns: repeat(5, 1fr);

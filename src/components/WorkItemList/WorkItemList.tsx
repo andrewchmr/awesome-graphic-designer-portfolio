@@ -93,7 +93,7 @@ export const WorkItemList = () => {
         let item = mockWorkItems[0];
         mockWorkItems.forEach((workItem) => {
             if (toSeoUrl(workItem.imageName) === fileName) {
-                item = workItem
+                item = workItem;
             }
         });
 
