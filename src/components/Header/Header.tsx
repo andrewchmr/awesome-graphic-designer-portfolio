@@ -22,11 +22,6 @@ export const Header = () => {
         return (() => window.removeEventListener("scroll", handleScroll));
     });
 
-    const handleClickOnNavSub = () => {
-        hideMobileMenuNav();
-        scrollTop();
-    };
-
     const hideMobileMenuNav = () => {
         if (menuButton && menuButton.current) {
             menuButton.current.checked = false;
@@ -39,10 +34,10 @@ export const Header = () => {
         <nav>
             <input className="Header__menu-button" ref={menuButton} type="checkbox" id="menu-button"/>
             <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>
-            <ul className="Header__nav-sub" onClick={handleClickOnNavSub}>
-                <li><NavLink className="Header__logo" to={'/'}/></li>
+            <ul className="Header__nav-sub" onClick={hideMobileMenuNav}>
+                <li><NavLink className="Header__logo" onClick={scrollTop} to={'/'}/></li>
                 <li className={'Header__tab'}>
-                    <NavLink exact to={'/'} className={'Header__link'}
+                    <NavLink exact to={'/'} onClick={scrollTop} className={'Header__link'}
                              activeClassName="Header__link--active">Work</NavLink>
                 </li>
                 <li className={'Header__tab'}>
