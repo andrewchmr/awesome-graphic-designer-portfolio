@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import './Header.scss';
 import {NavLink} from "react-router-dom";
+import smoothscroll from 'smoothscroll-polyfill';
+
+smoothscroll.polyfill();
 
 const isScrolledToTop = () => window.scrollY <= 0;
 
@@ -19,17 +22,24 @@ export const Header = () => {
         return (() => window.removeEventListener("scroll", handleScroll));
     });
 
+    const handleClickOnNavSub = () => {
+        hideMobileMenuNav();
+        scrollTop();
+    };
+
     const hideMobileMenuNav = () => {
         if (menuButton && menuButton.current) {
             menuButton.current.checked = false;
         }
     };
 
+    const scrollTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+
     return <header className={`Header${visible ? '' : ' Header--hidden'}`}>
         <nav>
             <input className="Header__menu-button" ref={menuButton} type="checkbox" id="menu-button"/>
             <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>
-            <ul className="Header__nav-sub" onClick={hideMobileMenuNav}>
+            <ul className="Header__nav-sub" onClick={handleClickOnNavSub}>
                 <li><NavLink className="Header__logo" to={'/'}/></li>
                 <li className={'Header__tab'}>
                     <NavLink exact to={'/'} className={'Header__link'}

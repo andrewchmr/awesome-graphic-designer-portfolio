@@ -1,6 +1,6 @@
 {
   "name": "awesome-graphic-designer-portfolio",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://vernal-bloom.com",
   "private": true,
   "dependencies": {
@@ -19,6 +19,7 @@
     "react-scripts": "^3.4.0",
     "react-swipeable": "^5.5.0",
     "react-transition-group": "^4.3.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "typescript": "^3.8.2"
   },
   "scripts": {
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-helmet": "^5.0.15"
+    "@types/react-helmet": "^5.0.15",
+    "@types/smoothscroll-polyfill": "^0.3.1"
   }
 }
