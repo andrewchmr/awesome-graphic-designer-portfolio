@@ -12,6 +12,7 @@ import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
 import {WorkItem} from "../WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
+import {StartUpScreen} from "./StartUpScreen/StartUpScreen";
 
 interface IAwesomeSlider extends AwesomeSlider {
     clickPrev: () => void,
@@ -68,17 +69,11 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
 
         const isAwesomeSliderLoaded = () => awesomeSlider.current && awesomeSlider.current.state.index !== undefined;
 
-        const showStartUpScreen = () => {
-            return <div>
-                <img src={require(`../../logo.svg`)} alt={'Vernal Bloom logo'}/>
-            </div>
-        };
-
         return <div className="WorkItemModal">
             <Helmet>
                 <title>{title}</title>
             </Helmet>
-            <AwesomeSlider startupScreen={showStartUpScreen()}
+            <AwesomeSlider startupScreen={<StartUpScreen/>}
                            ref={awesomeSlider}
                            selected={initialWorkItem.id}
                            fillParent={true}
