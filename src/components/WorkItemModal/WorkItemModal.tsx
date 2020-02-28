@@ -5,7 +5,7 @@ import useBodyClass from "../../utils/useBodyClass";
 import 'react-awesome-slider/dist/styles.css';
 import {toSeoUrl} from "../../utils/toSeoUrl";
 import {CloseButton} from "./CloseButton/CloseButton";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import AwesomeSlider from 'react-awesome-slider';
 // @ts-ignore
 import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
@@ -19,6 +19,8 @@ interface WorkItemModalProps {
 }
 
 interface IAwesomeSlider extends AwesomeSlider {
+    clickPrev: () => void,
+    clickNext: () => void,
     state: {
         index: number
     }
@@ -29,6 +31,24 @@ export const WorkItemModal = ({initialWorkItem, workItemList}: WorkItemModalProp
         useBodyClass(`modal--open`);
         const awesomeSlider = useRef<IAwesomeSlider>(null);
         const [title, setTitle] = useState('Vernal Bloom');
+
+        useEffect(() => {
+            const handleKeyboardEvent = (event: KeyboardEvent) => {
+                switch (event.code) {
+                    case 'Escape':
+                        history.push(`/`);
+                        break;
+                    case 'ArrowLeft':
+                        awesomeSlider.current && awesomeSlider.current.clickPrev();
+                        break;
+                    case 'ArrowRight':
+                        awesomeSlider.current && awesomeSlider.current.clickNext();
+                        break;
+                }
+            };
+            window.addEventListener('keydown', handleKeyboardEvent);
+            return () => window.removeEventListener('keydown', handleKeyboardEvent);
+        }, []);
 
         const handleTransitionEnd = ({currentIndex}: { currentIndex: number }) => {
             const imageName = workItemList[currentIndex].imageName;
