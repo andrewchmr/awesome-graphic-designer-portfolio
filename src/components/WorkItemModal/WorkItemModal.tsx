@@ -13,11 +13,6 @@ import {WorkItem} from "../WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
 
-interface WorkItemModalProps {
-    initialWorkItem: WorkItem;
-    workItemList: WorkItem[];
-}
-
 interface IAwesomeSlider extends AwesomeSlider {
     clickPrev: () => void,
     clickNext: () => void,
@@ -26,9 +21,24 @@ interface IAwesomeSlider extends AwesomeSlider {
     }
 }
 
-export const WorkItemModal = ({initialWorkItem, workItemList}: WorkItemModalProps) => {
+const getItemByFileName = (list: WorkItem[]): WorkItem => {
+    const url = window.location.pathname;
+    const fileName = url.substring(url.lastIndexOf('/') + 1);
+
+    let item = list[0];
+    list.forEach((workItem) => {
+        if (toSeoUrl(workItem.imageName) === fileName) {
+            item = workItem;
+        }
+    });
+
+    return item;
+};
+
+export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
         const history = useHistory();
         useBodyClass(`modal--open`);
+        const [initialWorkItem] = useState(getItemByFileName(workItemList));
         const awesomeSlider = useRef<IAwesomeSlider>(null);
         const [title, setTitle] = useState('Vernal Bloom');
 
@@ -48,7 +58,7 @@ export const WorkItemModal = ({initialWorkItem, workItemList}: WorkItemModalProp
             };
             window.addEventListener('keydown', handleKeyboardEvent);
             return () => window.removeEventListener('keydown', handleKeyboardEvent);
-        }, []);
+        }, [history]);
 
         const handleTransitionEnd = ({currentIndex}: { currentIndex: number }) => {
             const imageName = workItemList[currentIndex].imageName;

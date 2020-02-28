@@ -11,6 +11,8 @@ import {About} from "./components/About/About";
 import {WorkItemList} from "./components/WorkItemList/WorkItemList";
 import NoMatch from "./components/NoMatch/NoMatch";
 import {Helmet} from "react-helmet";
+import {WorkItemModal} from "./components/WorkItemModal/WorkItemModal";
+import {mockWorkItems} from "./mockWorkItems";
 
 const App: React.FC = () => {
     return (
@@ -18,14 +20,14 @@ const App: React.FC = () => {
             <Header/>
             <Main>
                 <Switch>
-                    <Route path="/work">
-                        <WorkItemList/>
-                    </Route>
-                    <Route exact path="/">
+                    <Route exact path={`/`}>
                         <Helmet>
                             <title>Vernal Bloom</title>
                         </Helmet>
-                        <WorkItemList/>
+                        <WorkItemList workItemList={mockWorkItems}/>
+                    </Route>
+                    <Route path={`/work/:fileName`}>
+                        <WorkItemModal workItemList={mockWorkItems}/>
                     </Route>
                     <Route path="/about">
                         <Helmet>
