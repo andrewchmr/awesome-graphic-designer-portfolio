@@ -1,4 +1,4 @@
-import {WorkItem} from "./components/WorkItem/WorkItem";
+import {WorkItem} from "./components/WorkItemList/WorkItem/WorkItem";
 
 export const mockWorkItems: WorkItem[] = [
     {

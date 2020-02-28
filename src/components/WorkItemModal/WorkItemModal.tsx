@@ -9,7 +9,7 @@ import {useEffect, useRef, useState} from "react";
 import AwesomeSlider from 'react-awesome-slider';
 // @ts-ignore
 import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
-import {WorkItem} from "../WorkItem/WorkItem";
+import {WorkItem} from "../WorkItemList/WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
 import {StartUpScreen} from "./StartUpScreen/StartUpScreen";

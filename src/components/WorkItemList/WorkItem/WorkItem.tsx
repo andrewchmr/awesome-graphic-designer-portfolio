@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './WorkItem.scss';
 import {Link} from "react-router-dom";
-import {toSeoUrl} from "../../utils/toSeoUrl";
+import {toSeoUrl} from "../../../utils/toSeoUrl";
 
 export interface WorkItem {
     id: number,
@@ -26,7 +26,7 @@ export const WorkItem = ({id, fileName, imageName}: WorkItem) => {
         <Link className={'WorkItem__image-wrap'}
               to={`/work/${toSeoUrl(imageName)}`}>
             <img className={'WorkItem__image'} onLoad={() => setImageLoaded(true)}
-                 src={require(`../../images/${fileName}-sm.jpg`)}
+                 src={require(`../../../images/${fileName}-sm.jpg`)}
                  alt={`Vernal Bloom - ${imageName}`}/>
             {imageLoaded && showDescOverlay()}
             {!imageLoaded && showPlaceholder()}

@@ -1,4 +1,4 @@
-import {WorkItem} from "../WorkItem/WorkItem";
+import {WorkItem} from "./WorkItem/WorkItem";
 import React from "react";
 import './WorkItemList.scss';
 
