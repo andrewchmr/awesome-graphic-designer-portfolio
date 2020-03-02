@@ -34,8 +34,8 @@ export const Header = () => {
         <nav>
             <input className="Header__menu-button" ref={menuButton} type="checkbox" id="menu-button"/>
             <label className="Header__menu-icon" htmlFor="menu-button"><span/></label>
+            <NavLink className="Header__logo" onClick={scrollTop} to={'/'}/>
             <ul className="Header__nav-sub" onClick={hideMobileMenuNav}>
-                <li><NavLink className="Header__logo" onClick={scrollTop} to={'/'}/></li>
                 <li className={'Header__tab'}>
                     <NavLink exact to={'/'} onClick={scrollTop} className={'Header__link'}
                              activeClassName="Header__link--active">Work</NavLink>
