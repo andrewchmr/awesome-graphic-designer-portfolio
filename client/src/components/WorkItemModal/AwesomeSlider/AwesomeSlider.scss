@@ -1,0 +1,28 @@
+@import "../../../variables";
+
+.awssld {
+  --content-background-color: #D7B7BB !important;
+  --slider-transition-duration: 700ms !important;
+  --loader-bar-color: #AA8C90 !important;
+}
+
+.awssld__controls {
+  --organic-arrow-color: #ffffff;
+}
+
+@media (max-width: $breakpoint-tablet-landscape - 1) {
+  .awssld__controls {
+    visibility: hidden !important;
+  }
+}
+
+.awssld__bullets {
+  bottom: 25px !important;
+  z-index: 10 !important;
+}
+
+.awssld__bullets button {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: white !important;
+}

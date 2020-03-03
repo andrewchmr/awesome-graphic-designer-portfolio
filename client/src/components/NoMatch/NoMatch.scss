@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.NoMatch {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+
+  &__link-home {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1.5px solid white;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: 54px;
+    font-size: 25px;
+
+    &__link-home {
+      border-bottom: 2px solid white;
+    }
+  }
+}
