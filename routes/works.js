@@ -39,7 +39,10 @@ router.get('/api/works', async (req, res) => {
     await Work.find({}).sort({'_id': -1}).then(users => res.json(users));
 });
 
-router.post('/api/create', auth, upload.single('image'), async (req, res) => {
+router.post('/api/create', auth, upload.fields([
+    {name: 'image', maxCount: 1},
+    {name: 'thumbnail', maxCount: 1}
+]), async (req, res) => {
     const {title} = req.body;
 
     const workDuplicateTitle = await Work.findOne({title});
@@ -51,10 +54,13 @@ router.post('/api/create', auth, upload.single('image'), async (req, res) => {
     let thumbnailUrl = '';
     let color = '';
 
-    await uploader.upload(req.file.path, {colors: true}).then((result) => {
+    await uploader.upload(req.files.image[0].path, {colors: true}).then((result) => {
         imageUrl = result.secure_url;
-        thumbnailUrl = url(result.public_id, {width: 320, height: 320, crop: "fill", gravity: "face"});
         color = getColor(result.colors);
+    });
+
+    await uploader.upload(req.files.thumbnail[0].path, {colors: true}).then((result) => {
+        thumbnailUrl = result.secure_url;
     });
 
     const work = new Work({
