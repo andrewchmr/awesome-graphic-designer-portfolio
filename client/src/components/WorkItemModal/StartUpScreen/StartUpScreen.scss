@@ -7,11 +7,11 @@
 
 .StartUpScreen {
   &__animation {
-    width: 250px;
+    width: 200px;
 
     @media (min-width: $breakpoint-tablet) {
       & {
-        width: 350px;
+        width: 275px;
       }
     }
   }
