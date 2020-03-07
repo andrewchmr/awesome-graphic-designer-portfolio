@@ -26,8 +26,9 @@ export const WorkItem = ({_id, title, image, thumbnail}: WorkItem) => {
     return <div className="WorkItem">
         <Link className={'WorkItem__image-wrap'}
               to={`/work/${toSeoUrl(title)}`}>
-            <img className={'WorkItem__image'} onLoad={() => setImageLoaded(true)}
-                 src={`/${thumbnail}`}
+            <img className={'WorkItem__image'}
+                 onLoad={() => setImageLoaded(true)}
+                 src={thumbnail}
                  alt={`Vernal Bloom - ${title}`}/>
             {imageLoaded && showDescOverlay()}
             {!imageLoaded && showPlaceholder()}

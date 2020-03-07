@@ -1,3 +1,4 @@
+const {uploader} = require('cloudinary');
 const {Router} = require('express');
 const Work = require('../models/Work');
 const router = Router();
@@ -5,9 +6,6 @@ const multer = require('multer');
 const auth = require('../middleware/auth.middleware');
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads/');
-    },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
     }
@@ -44,11 +42,23 @@ router.post('/api/create', auth, upload.fields([
         return res.status(400).json({message: 'That title is already taken'})
     }
 
+    let imageUrl = '';
+    let thumbnailUrl = '';
+
+    await uploader.upload(req.files.image[0].path).then((result) => {
+        imageUrl = result.url;
+    });
+
+    await uploader.upload(req.files.thumbnail[0].path).then((result) => {
+        thumbnailUrl = result.url;
+    });
+
     const work = new Work({
         title: title,
-        image: req.files.image[0].path,
-        thumbnail: req.files.thumbnail[0].path
+        image: imageUrl,
+        thumbnail: thumbnailUrl
     });
+
     await work.save();
     res.redirect('/');
 });

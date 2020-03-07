@@ -89,8 +89,9 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                            onTransitionEnd={handleTransitionEnd}
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
-                    <div key={workItem._id} data-alt={`Vernal Bloom - ${workItem.title}`}
-                         data-src={`/${workItem.image}`}>
+                    <div key={workItem._id}
+                         data-alt={`Vernal Bloom - ${workItem.title}`}
+                         data-src={workItem.image}>
                         <h1 className={'WorkItemModal__image-title'}>{workItem.title}</h1>
                     </div>
                 )}
