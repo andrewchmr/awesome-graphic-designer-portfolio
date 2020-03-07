@@ -3,13 +3,15 @@
 .awssld__startUp {
   background-color: $primary-color !important;
   z-index: 1000;
+}
 
-  & img {
-    width: 100px;
+.StartUpScreen {
+  &__animation {
+    width: 250px;
 
     @media (min-width: $breakpoint-tablet) {
       & {
-        width: 200px;
+        width: 350px;
       }
     }
   }

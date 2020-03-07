@@ -81,6 +81,7 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                 <title>{title}</title>
             </Helmet>
             <AwesomeSlider startupScreen={<StartUpScreen/>}
+                           startupDelay={600}
                            ref={awesomeSlider}
                            selected={getCurrentId()}
                            fillParent={true}
