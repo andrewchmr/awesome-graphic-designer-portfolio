@@ -1,4 +1,4 @@
-const {uploader} = require('cloudinary');
+const {uploader, url} = require('cloudinary').v2;
 const {Router} = require('express');
 const Work = require('../models/Work');
 const router = Router();
@@ -27,14 +27,19 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
+function getColor(colors) {
+    if (colors[0][0] === "#FFFFFF") {
+        return colors[1][0];
+    } else {
+        return colors[0][0];
+    }
+}
+
 router.get('/api/works', async (req, res) => {
     await Work.find({}).sort({'_id': -1}).then(users => res.json(users));
 });
 
-router.post('/api/create', auth, upload.fields([
-    {name: 'image', maxCount: 1},
-    {name: 'thumbnail', maxCount: 1}
-]), async (req, res) => {
+router.post('/api/create', auth, upload.single('image'), async (req, res) => {
     const {title} = req.body;
 
     const workDuplicateTitle = await Work.findOne({title});
@@ -44,19 +49,19 @@ router.post('/api/create', auth, upload.fields([
 
     let imageUrl = '';
     let thumbnailUrl = '';
+    let color = '';
 
-    await uploader.upload(req.files.image[0].path).then((result) => {
-        imageUrl = result.url;
-    });
-
-    await uploader.upload(req.files.thumbnail[0].path).then((result) => {
-        thumbnailUrl = result.url;
+    await uploader.upload(req.file.path, {colors: true}).then((result) => {
+        imageUrl = result.secure_url;
+        thumbnailUrl = url(result.public_id, {width: 320, height: 320, crop: "fill", gravity: "face"});
+        color = getColor(result.colors);
     });
 
     const work = new Work({
         title: title,
         image: imageUrl,
-        thumbnail: thumbnailUrl
+        thumbnail: thumbnailUrl,
+        color: color
     });
 
     await work.save();

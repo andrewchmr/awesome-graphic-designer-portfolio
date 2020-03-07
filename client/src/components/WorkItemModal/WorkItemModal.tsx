@@ -90,6 +90,7 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
                     <div key={workItem._id}
+                         style={{backgroundColor: workItem.color}}
                          data-alt={`Vernal Bloom - ${workItem.title}`}
                          data-src={workItem.image}>
                         <h1 className={'WorkItemModal__image-title'}>{workItem.title}</h1>

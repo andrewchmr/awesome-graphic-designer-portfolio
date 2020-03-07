@@ -7,7 +7,8 @@ export interface WorkItem {
     _id: number,
     title: string,
     image: string,
-    thumbnail: string
+    thumbnail: string,
+    color: string
 }
 
 export const WorkItem = ({_id, title, image, thumbnail}: WorkItem) => {

@@ -7,7 +7,8 @@ const schema = new Schema({
         unique: true
     },
     image: {type: String, required: true},
-    thumbnail: {type: String, required: true}
+    thumbnail: {type: String, required: true},
+    color: {type: String, required: true}
 });
 
 module.exports = model('Work', schema);
