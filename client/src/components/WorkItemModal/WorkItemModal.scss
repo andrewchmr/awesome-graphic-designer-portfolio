@@ -41,6 +41,11 @@
 
 .awssld__content {
   flex-direction: column;
+  -webkit-transition: background-color 500ms ease;
+  -moz-transition: background-color 500ms ease;
+  -o-transition: background-color 500ms ease;
+  -ms-transition: background-color 500ms ease;
+  transition: background-color 500ms ease;
 
   & > img {
     width: auto !important;

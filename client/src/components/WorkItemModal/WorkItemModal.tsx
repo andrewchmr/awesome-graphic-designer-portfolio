@@ -19,7 +19,8 @@ interface IAwesomeSlider extends AwesomeSlider {
     clickNext: () => void,
     state: {
         index: number
-    }
+    },
+    slider: HTMLElement
 }
 
 const getItemByFileName = (list: WorkItem[]): WorkItem => {
@@ -61,7 +62,12 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
         }, [history]);
 
         const handleTransitionEnd = ({currentIndex}: { currentIndex: number }) => {
-            const imageName = workItemList[currentIndex].title;
+            const currentWorkItem = workItemList[currentIndex];
+            if (awesomeSlider.current) {
+                const slider = awesomeSlider.current.slider;
+                slider.style.setProperty('--content-background-color', currentWorkItem.color);
+            }
+            const imageName = currentWorkItem.title;
             history.push(`/work/${toSeoUrl(imageName)}`);
             setTitle(`${imageName} — Vernal Bloom`);
         };
@@ -90,7 +96,6 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
                     <div key={workItem._id}
-                         style={{backgroundColor: workItem.color}}
                          data-alt={`Vernal Bloom - ${workItem.title}`}
                          data-src={workItem.image}>
                         <h1 className={'WorkItemModal__image-title'}>{workItem.title}</h1>
