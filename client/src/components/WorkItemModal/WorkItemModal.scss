@@ -26,13 +26,13 @@
   &__image {
     max-height: 50vh;
     max-width: 100%;
+    box-shadow: 0 2px 6px 0 rgba(35, 31, 32, 0.24);
 
     @media (min-width: $breakpoint-tablet-landscape) {
       border: 20px solid white;
     }
 
     @media (min-width: $breakpoint-tablet) {
-      box-shadow: 0 2px 6px 0 rgba(35, 31, 32, 0.24);
       max-height: 75vh;
       max-width: 100%;
     }
