@@ -1,5 +1,17 @@
 @import "../../../variables";
 
+$stagger-delay: 75ms;
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .WorkItem {
   text-align: center;
 
@@ -60,6 +72,11 @@
   }
 }
 
+.WorkItem__image-wrap {
+  animation: cardEntrance 700ms ease-out;
+  animation-fill-mode: backwards;
+}
+
 @media (min-width: $breakpoint-desktop) {
   .WorkItem {
     &__image-wrap:hover &__desc-overlay {
@@ -67,3 +84,96 @@
     }
   }
 }
+
+/*TODO: use loop*/
+
+.WorkItem:nth-child(1) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(1 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(2) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(2 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(3) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(3 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(4) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(4 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(5) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(5 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(6) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(6 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(7) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(7 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(8) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(8 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(9) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(9 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(10) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(10 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(11) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(11 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(12) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(12 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(13) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(13 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(14) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(14 * #{$stagger-delay});
+  }
+}
+
+.WorkItem:nth-child(15) {
+  .WorkItem__image-wrap {
+    animation-delay: calc(15 * #{$stagger-delay});
+  }
+}
+
