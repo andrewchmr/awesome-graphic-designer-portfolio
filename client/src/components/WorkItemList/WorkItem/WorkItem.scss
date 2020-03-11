@@ -61,7 +61,7 @@
 }
 
 .WorkItem__image-wrap {
-  animation: cardEntrance 400ms ease-out;
+  animation: cardEntrance 700ms ease-out;
   animation-fill-mode: backwards;
 }
 
@@ -73,7 +73,7 @@
   }
 }
 
-$stagger-delay: 40ms;
+$stagger-delay: 75ms;
 
 @keyframes cardEntrance {
   0% {
