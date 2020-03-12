@@ -19,7 +19,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "react-swipeable": "^5.5.0",
-    "react-transition-group": "^4.3.0",
+    "react-transition-group": "^1.2.1",
     "smoothscroll-polyfill": "^0.4.4",
     "typescript": "^3.8.2"
   },
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.15",
+    "@types/react-transition-group": "^4.2.4",
     "@types/smoothscroll-polyfill": "^0.3.1"
   }
 }

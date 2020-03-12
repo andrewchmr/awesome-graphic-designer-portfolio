@@ -1,11 +1,11 @@
 import * as React from "react";
+import {useEffect, useRef, useState} from "react";
 import './WorkItemModal.scss';
 import {useHistory} from "react-router-dom";
 import useBodyClass from "../../utils/useBodyClass";
 import 'react-awesome-slider/dist/styles.css';
 import {toSeoUrl} from "../../utils/toSeoUrl";
 import {CloseButton} from "./CloseButton/CloseButton";
-import {useEffect, useRef, useState} from "react";
 import AwesomeSlider from 'react-awesome-slider';
 // @ts-ignore
 import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
@@ -13,6 +13,7 @@ import {WorkItem} from "../WorkItemList/WorkItem/WorkItem";
 import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
 import {StartUpScreen} from "./StartUpScreen/StartUpScreen";
+import {Category} from "../../App";
 
 interface IAwesomeSlider extends AwesomeSlider {
     clickPrev: () => void,
@@ -37,7 +38,7 @@ const getItemByFileName = (list: WorkItem[]): WorkItem => {
     return item;
 };
 
-export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
+export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: WorkItem[], currentCategory: Category }) => {
         const history = useHistory();
         useBodyClass(`modal--open`);
         const awesomeSlider = useRef<IAwesomeSlider>(null);
@@ -68,7 +69,8 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                 slider.style.setProperty('--content-background-color', currentWorkItem.color);
             }
             const imageName = currentWorkItem.title;
-            history.push(`/work/${toSeoUrl(imageName)}`);
+            const url = currentCategory ? `/${currentCategory}` : '/work';
+            history.push(`${url}/${toSeoUrl(imageName)}`);
             setTitle(`${imageName} — Vernal Bloom`);
         };
 
@@ -79,6 +81,20 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                 return workItemList.indexOf(getItemByFileName(workItemList));
             } else {
                 return undefined;
+            }
+        };
+
+        const geGoToUrl = () => {
+            if (currentCategory === Category.ALL) {
+                return '/';
+            } else if (currentCategory === Category.VECTOR) {
+                return '/vector-graphic';
+            } else if (currentCategory === Category.BITMAP) {
+                return '/bitmap-graphic';
+            } else if (currentCategory === Category.LOGOTYPE) {
+                return '/logotype';
+            } else {
+                return '/';
             }
         };
 
@@ -102,7 +118,7 @@ export const WorkItemModal = ({workItemList}: { workItemList: WorkItem[] }) => {
                     </div>
                 )}
             </AwesomeSlider>
-            {isAwesomeSliderLoaded() && <CloseButton/>}
+            {isAwesomeSliderLoaded() && <CloseButton goToPath={geGoToUrl()}/>}
         </div>
     }
 ;

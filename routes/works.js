@@ -43,7 +43,7 @@ router.post('/api/create', auth, upload.fields([
     {name: 'image', maxCount: 1},
     {name: 'thumbnail', maxCount: 1}
 ]), async (req, res) => {
-    const {title} = req.body;
+    const {title, category} = req.body;
 
     const workDuplicateTitle = await Work.findOne({title});
     if (workDuplicateTitle) {
@@ -67,7 +67,8 @@ router.post('/api/create', auth, upload.fields([
         title: title,
         image: imageUrl,
         thumbnail: thumbnailUrl,
-        color: color
+        color: color,
+        category: category
     });
 
     await work.save();

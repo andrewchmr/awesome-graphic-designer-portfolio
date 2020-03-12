@@ -30,6 +30,10 @@ export const Header = () => {
 
     const scrollTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
 
+    const isTabActive = (_: any, {pathname}: any) => {
+        return ['/', '/vector-graphic', '/bitmap-graphic', '/logotype'].includes(pathname);
+    };
+
     return <header className={`Header${visible ? '' : ' Header--hidden'}`}>
         <nav>
             <input className="Header__menu-button" ref={menuButton} type="checkbox" id="menu-button"/>
@@ -37,7 +41,9 @@ export const Header = () => {
             <NavLink className="Header__logo" onClick={scrollTop} to={'/'}/>
             <ul className="Header__nav-sub" onClick={hideMobileMenuNav}>
                 <li className={'Header__tab'}>
-                    <NavLink exact to={'/'} onClick={scrollTop} className={'Header__link'}
+                    <NavLink exact to={'/'}
+                             isActive={isTabActive}
+                             onClick={scrollTop} className={'Header__link'}
                              activeClassName="Header__link--active">Work</NavLink>
                 </li>
                 <li className={'Header__tab'}>

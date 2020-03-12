@@ -2,16 +2,22 @@ import React, {useState} from "react";
 import './WorkItem.scss';
 import {Link} from "react-router-dom";
 import {toSeoUrl} from "../../../utils/toSeoUrl";
+import {Category} from "../../../App";
 
 export interface WorkItem {
     _id: number,
     title: string,
     image: string,
     thumbnail: string,
-    color: string
+    color: string,
+    category: string
 }
 
-export const WorkItem = ({_id, title, image, thumbnail}: WorkItem) => {
+interface WorkItemProps extends WorkItem {
+    currentCategory: Category
+}
+
+export const WorkItem = ({_id, title, image, thumbnail, currentCategory}: WorkItemProps) => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
     const showDescOverlay = () => {
@@ -24,9 +30,17 @@ export const WorkItem = ({_id, title, image, thumbnail}: WorkItem) => {
         return <div className={'WorkItem__placeholder'}/>;
     };
 
+    const getToUrl = () => {
+        if (currentCategory) {
+            return `${currentCategory}/${toSeoUrl(title)}`;
+        } else {
+            return `/work/${toSeoUrl(title)}`;
+        }
+    };
+
     return <div className="WorkItem">
         <Link className={'WorkItem__image-wrap'}
-              to={`/work/${toSeoUrl(title)}`}>
+              to={getToUrl()}>
             <img className={'WorkItem__image'}
                  onLoad={() => setImageLoaded(true)}
                  src={thumbnail}
