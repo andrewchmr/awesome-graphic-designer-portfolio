@@ -1,9 +1,0 @@
-{
-  "port": 5000,
-  "jwtSecret": "andrewchmr",
-  "mongoUri": "mongodb://heroku_xgl24k5b:uvnp33oti9hg7qg9hj4ec6erie@ds053529.mlab.com:53529/heroku_xgl24k5b",
-  "baseUrl": "http://localhost:5000",
-  "cloudName": "htn4pmlv5",
-  "cloudApiKey": "336957942769146",
-  "cloudApiSecret": "4qJeUEwpAFqt-mCnzTnyP8YJ-t0"
-}
