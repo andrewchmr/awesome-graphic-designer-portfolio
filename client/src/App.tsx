@@ -29,6 +29,9 @@ const App: React.FC = () => {
 
     return (
         <Router>
+            <Helmet>
+                <meta name="description" content="The work of Ukrainian artist, Vernal Bloom."/>
+            </Helmet>
             <Header/>
             <Main>
                 <Switch>

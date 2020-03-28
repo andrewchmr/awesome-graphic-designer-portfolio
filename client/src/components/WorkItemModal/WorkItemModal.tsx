@@ -101,13 +101,14 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
         return <div className="WorkItemModal">
             <Helmet>
                 <title>{title}</title>
+                <meta name="description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
             </Helmet>
             <AwesomeSlider startupScreen={<StartUpScreen/>}
                            startupDelay={600}
                            ref={awesomeSlider}
                            selected={getCurrentId()}
                            fillParent={true}
-                           bullets={!!(isAwesomeSliderLoaded())}
+                           bullets={isAwesomeSliderLoaded() as boolean}
                            onTransitionEnd={handleTransitionEnd}
                            cssModule={AwesomeSliderStyles}>
                 {workItemList.map((workItem: WorkItem) =>
