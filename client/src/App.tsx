@@ -40,19 +40,19 @@ const App: React.FC = () => {
                     </Route>
                     <Route exact path={`/vector-graphic`}>
                         <Helmet>
-                            <title>Vernal Bloom</title>
+                            <title>Vector Graphic — Vernal Bloom</title>
                         </Helmet>
                         <WorkItemList workItemList={workItems} currentCategory={Category.VECTOR}/>
                     </Route>
                     <Route exact path={`/bitmap-graphic`}>
                         <Helmet>
-                            <title>Vernal Bloom</title>
+                            <title>Bitmap Graphic — Vernal Bloom</title>
                         </Helmet>
                         <WorkItemList workItemList={workItems} currentCategory={Category.BITMAP}/>
                     </Route>
                     <Route exact path={`/logotype`}>
                         <Helmet>
-                            <title>Vernal Bloom</title>
+                            <title>Logotype — Vernal Bloom</title>
                         </Helmet>
                         <WorkItemList workItemList={workItems} currentCategory={Category.LOGOTYPE}/>
                     </Route>
