@@ -6,6 +6,7 @@ import {CSSTransitionGroup} from 'react-transition-group'
 import {Loader} from "../Loader/Loader";
 import {NavLink} from "react-router-dom";
 import {Category} from "../../App";
+import {Helmet} from "react-helmet";
 
 export const WorkItemList = ({workItemList, currentCategory}: { workItemList: WorkItem[], currentCategory: Category }) => {
 
@@ -18,6 +19,18 @@ export const WorkItemList = ({workItemList, currentCategory}: { workItemList: Wo
             return item.category === Category.BITMAP;
         } else if (currentCategory === Category.LOGOTYPE) {
             return item.category === Category.LOGOTYPE;
+        }
+    };
+
+    const getTitle = () => {
+        if (currentCategory === Category.ALL) {
+            return 'Vernal Bloom';
+        } else if (currentCategory === Category.VECTOR) {
+            return 'Vector Graphic — Vernal Bloom';
+        } else if (currentCategory === Category.BITMAP) {
+            return 'Bitmap Graphic — Vernal Bloom';
+        } else if (currentCategory === Category.LOGOTYPE) {
+            return 'Logotype — Vernal Bloom';
         }
     };
 
@@ -47,6 +60,9 @@ export const WorkItemList = ({workItemList, currentCategory}: { workItemList: Wo
                 transitionName="work-item-transition"
                 transitionEnterTimeout={1}
                 transitionLeaveTimeout={300} className="WorkItemList">
+                <Helmet>
+                    <title>{getTitle()}</title>
+                </Helmet>
                 {workItemList.filter((item) => getFilter(item)).map((workItem: WorkItem) =>
                     <WorkItem currentCategory={currentCategory} key={workItem._id} {...workItem}/>)
                 }
