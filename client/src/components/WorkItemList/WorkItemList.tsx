@@ -8,19 +8,6 @@ import {NavLink} from "react-router-dom";
 import {Category} from "../../App";
 
 export const WorkItemList = ({workItemList, currentCategory}: { workItemList: WorkItem[], currentCategory: Category }) => {
-
-    const getFilter = (item: WorkItem) => {
-        if (currentCategory === Category.ALL) {
-            return true;
-        } else if (currentCategory === Category.VECTOR) {
-            return item.category === Category.VECTOR;
-        } else if (currentCategory === Category.BITMAP) {
-            return item.category === Category.BITMAP;
-        } else if (currentCategory === Category.LOGOTYPE) {
-            return item.category === Category.LOGOTYPE;
-        }
-    };
-
     if (workItemList.length > 0) {
         return <div>
             <ul className={"WorkItemList__category-list"}>
@@ -47,8 +34,10 @@ export const WorkItemList = ({workItemList, currentCategory}: { workItemList: Wo
                 transitionName="work-item-transition"
                 transitionEnterTimeout={1}
                 transitionLeaveTimeout={300} className="WorkItemList">
-                {workItemList.filter((item) => getFilter(item)).map((workItem: WorkItem) =>
-                    <WorkItem currentCategory={currentCategory} key={workItem._id} {...workItem}/>)
+                {workItemList.map((workItem: WorkItem) =>
+                    <WorkItem currentCategory={currentCategory}
+                              key={workItem._id}
+                              {...workItem}/>)
                 }
             </CSSTransitionGroup>
         </div>

@@ -84,17 +84,16 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             }
         };
 
-        const geGoToUrl = () => {
-            if (currentCategory === Category.ALL) {
-                return '/';
-            } else if (currentCategory === Category.VECTOR) {
-                return '/vector-graphic';
-            } else if (currentCategory === Category.BITMAP) {
-                return '/bitmap-graphic';
-            } else if (currentCategory === Category.LOGOTYPE) {
-                return '/logotype';
-            } else {
-                return '/';
+        const getExitUrl = () => {
+            switch (currentCategory) {
+                case Category.ALL:
+                    return '/';
+                case Category.VECTOR:
+                    return '/vector-graphic';
+                case Category.BITMAP:
+                    return '/bitmap-graphic';
+                case Category.LOGOTYPE:
+                    return '/logotype';
             }
         };
 
@@ -119,7 +118,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
                     </div>
                 )}
             </AwesomeSlider>
-            {isAwesomeSliderLoaded() && <CloseButton goToPath={geGoToUrl()}/>}
+            {isAwesomeSliderLoaded() && <CloseButton goToPath={getExitUrl()}/>}
         </div>
     }
 ;

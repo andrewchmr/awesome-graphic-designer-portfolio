@@ -27,6 +27,19 @@ const App: React.FC = () => {
             .then((data) => setWorkItems(data))
     }, []);
 
+    const getWorkItemsByCategory = (currentCategory: Category) => {
+        switch (currentCategory) {
+            case Category.ALL:
+                return workItems;
+            case Category.VECTOR:
+                return workItems.filter((item => item.category === Category.VECTOR));
+            case Category.BITMAP:
+                return workItems.filter((item => item.category === Category.BITMAP));
+            case Category.LOGOTYPE:
+                return workItems.filter((item => item.category === Category.LOGOTYPE));
+        }
+    };
+
     return (
         <Router>
             <Helmet>
@@ -45,33 +58,36 @@ const App: React.FC = () => {
                         <Helmet>
                             <title>Vector Graphic — Vernal Bloom</title>
                         </Helmet>
-                        <WorkItemList workItemList={workItems} currentCategory={Category.VECTOR}/>
+                        <WorkItemList workItemList={getWorkItemsByCategory(Category.VECTOR)}
+                                      currentCategory={Category.VECTOR}/>
                     </Route>
                     <Route exact path={`/bitmap-graphic`}>
                         <Helmet>
                             <title>Bitmap Graphic — Vernal Bloom</title>
                         </Helmet>
-                        <WorkItemList workItemList={workItems} currentCategory={Category.BITMAP}/>
+                        <WorkItemList workItemList={getWorkItemsByCategory(Category.BITMAP)}
+                                      currentCategory={Category.BITMAP}/>
                     </Route>
                     <Route exact path={`/logotype`}>
                         <Helmet>
                             <title>Logotype — Vernal Bloom</title>
                         </Helmet>
-                        <WorkItemList workItemList={workItems} currentCategory={Category.LOGOTYPE}/>
+                        <WorkItemList workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
+                                      currentCategory={Category.LOGOTYPE}/>
                     </Route>
                     <Route path={`/work/:fileName`}>
                         <WorkItemModal workItemList={workItems} currentCategory={Category.ALL}/>
                     </Route>
                     <Route path={`/vector/:fileName`}>
-                        <WorkItemModal workItemList={workItems.filter((item => item.category === Category.VECTOR))}
+                        <WorkItemModal workItemList={getWorkItemsByCategory(Category.VECTOR)}
                                        currentCategory={Category.VECTOR}/>
                     </Route>
                     <Route path={`/bitmap/:fileName`}>
-                        <WorkItemModal workItemList={workItems.filter((item => item.category === Category.BITMAP))}
+                        <WorkItemModal workItemList={getWorkItemsByCategory(Category.BITMAP)}
                                        currentCategory={Category.BITMAP}/>
                     </Route>
                     <Route path={`/logotype/:fileName`}>
-                        <WorkItemModal workItemList={workItems.filter((item => item.category === Category.LOGOTYPE))}
+                        <WorkItemModal workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
                                        currentCategory={Category.LOGOTYPE}/>
                     </Route>
                     <Route path="/about">
