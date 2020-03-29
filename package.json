@@ -13,12 +13,12 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cloudinary": "^1.20.0",
-    "config": "^3.3.0",
+    "cloudinary": "^1.21.0",
+    "config": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.5",
+    "mongoose": "^5.9.6",
     "multer": "^1.4.2"
   },
   "devDependencies": {

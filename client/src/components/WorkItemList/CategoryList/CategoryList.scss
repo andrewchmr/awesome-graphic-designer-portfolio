@@ -1,0 +1,40 @@
+@import "../../../variables";
+
+.CategoryList {
+  display: none;
+  list-style: none;
+  justify-content: center;
+
+  &__category-wrapper {
+    position: relative;
+  }
+
+  &__category {
+    font-size: 15px;
+    padding: 20px 40px;
+    color: white;
+    line-height: 24px;
+    display: inline-block;
+    letter-spacing: 3px;
+    text-decoration: none;
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--active:after {
+      content: "";
+      position: absolute;
+      border-top: 1.5px solid white;
+      left: calc(50% - 5px);
+      bottom: 0;
+      top: 50px;
+      width: 10px;
+      height: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    display: flex;
+  }
+}

@@ -4,32 +4,18 @@ import './WorkItemList.scss';
 // @ts-ignore
 import {CSSTransitionGroup} from 'react-transition-group'
 import {Loader} from "../Loader/Loader";
-import {NavLink} from "react-router-dom";
 import {Category} from "../../App";
+import {CategoryList} from "./CategoryList/CategoryList";
 
-export const WorkItemList = ({workItemList, currentCategory}: { workItemList: WorkItem[], currentCategory: Category }) => {
+interface WorkItemListInterface {
+    workItemList: WorkItem[],
+    currentCategory: Category
+}
+
+export const WorkItemList = ({workItemList, currentCategory}: WorkItemListInterface) => {
     if (workItemList.length > 0) {
         return <div>
-            <ul className={"WorkItemList__category-list"}>
-                <li className={'WorkItemList__category-wrapper'}>
-                    <NavLink exact to={'/'} className={'WorkItemList__category'}
-                             activeClassName="WorkItemList__category--active">all</NavLink></li>
-                <li className={'WorkItemList__category-wrapper'}>
-                    <NavLink exact to={'/vector-graphic'}
-                             className={'WorkItemList__category'}
-                             activeClassName="WorkItemList__category--active">vector
-                        graphic</NavLink></li>
-                <li className={'WorkItemList__category-wrapper'}>
-                    <NavLink exact to={'/bitmap-graphic'}
-                             className={'WorkItemList__category'}
-                             activeClassName="WorkItemList__category--active">bitmap
-                        graphic</NavLink></li>
-                <li className={'WorkItemList__category-wrapper'}>
-                    <NavLink exact to={'/logotype'}
-                             className={'WorkItemList__category'}
-                             activeClassName="WorkItemList__category--active">logotype</NavLink>
-                </li>
-            </ul>
+            <CategoryList/>
             <CSSTransitionGroup
                 transitionName="work-item-transition"
                 transitionEnterTimeout={1}
