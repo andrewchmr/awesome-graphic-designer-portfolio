@@ -3,7 +3,7 @@ import React from "react";
 import './WorkItemList.scss';
 // @ts-ignore
 import {CSSTransitionGroup} from 'react-transition-group'
-import {Loader} from "../Loader/Loader";
+import {Loader} from "./Loader/Loader";
 import {Category} from "../../App";
 import {CategoryList} from "./CategoryList/CategoryList";
 

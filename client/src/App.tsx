@@ -24,7 +24,7 @@ const App: React.FC = () => {
     useEffect(() => {
         fetch('/api/works')
             .then((response) => response.json())
-            .then((data) => setWorkItems(data))
+            .then((data: WorkItem[]) => setWorkItems(data))
     }, []);
 
     const getWorkItemsByCategory = (currentCategory: Category) => {
