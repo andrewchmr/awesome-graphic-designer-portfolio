@@ -157,6 +157,14 @@
   .Header {
     height: $header-height-desktop;
 
+    &__menu-button {
+      display: none;
+
+      &:checked ~ .Header__nav-sub {
+        max-height: 0;
+      }
+    }
+
     &__tab-work {
       position: relative;
       border: none;
@@ -205,7 +213,7 @@
         bottom: 0;
         top: 50px;
         width: 5%;
-        height: 0px;
+        height: 0;
       }
     }
 
