@@ -27,4 +27,8 @@
       background-color: $primary-color;
     }
   }
+
+  @media (min-width: $breakpoint-tablet) {
+    display: none;
+  }
 }

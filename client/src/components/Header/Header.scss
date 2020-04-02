@@ -157,12 +157,16 @@
   .Header {
     height: $header-height-desktop;
 
-    &__menu-button {
-      display: none;
-
-      &:checked ~ .Header__nav-sub {
-        max-height: 0;
-      }
+    &__nav-sub {
+      background-color: inherit;
+      display: inline-block;
+      margin-top: 15px;
+      padding: 0;
+      width: 100%;
+      text-align: center;
+      clear: none;
+      float: right;
+      max-height: none;
     }
 
     &__tab-work {
