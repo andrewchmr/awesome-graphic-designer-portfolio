@@ -1,0 +1,30 @@
+@import "../../../variables";
+
+.HeaderCategoryMenu {
+  &--visible {
+    max-height: 500px;
+  }
+
+  &__link {
+    color: $primary-color;
+    width: 100%;
+    text-transform: lowercase;
+    font-size: 14px;
+    line-height: 24px;
+    display: inline-block;
+    letter-spacing: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+
+    &--highlight {
+      background-color: #AA8C90;
+      color: white;
+    }
+
+    &--active {
+      color: white;
+      background-color: $primary-color;
+    }
+  }
+}

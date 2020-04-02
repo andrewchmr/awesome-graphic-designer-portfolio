@@ -51,6 +51,28 @@
 
   }
 
+  &__tab-work {
+    position: relative;
+    border: none;
+    list-style: none;
+    text-transform: uppercase;
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+
+  &__tab-work-mobile {
+    position: relative;
+    border: none;
+    display: inline-block;
+    list-style: none;
+    text-transform: uppercase;
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+
   &__link {
     color: $primary-color;
     width: 100%;
@@ -108,7 +130,7 @@
     display: none;
 
     &:checked ~ .Header__nav-sub {
-      max-height: 240px;
+      max-height: 540px;
     }
 
     &:checked ~ .Header__menu-icon span {
@@ -135,22 +157,32 @@
   .Header {
     height: $header-height-desktop;
 
+    &__tab-work {
+      position: relative;
+      border: none;
+      list-style: none;
+      text-transform: uppercase;
+      margin-right: 0;
+      width: 100%;
+      text-align: center;
+      display: inline-block;
+    }
+
+    &__tab-work-mobile {
+      position: relative;
+      border: none;
+      display: none;
+      list-style: none;
+      text-transform: uppercase;
+      margin-right: 0;
+      width: 100%;
+      text-align: center;
+    }
+
     &__logo {
       top: 17px;
       width: 55px;
       height: 55px;
-    }
-
-    &__nav-sub {
-      background-color: inherit;
-      display: inline-block;
-      margin-top: 15px;
-      padding: 0;
-      width: 100%;
-      text-align: center;
-      clear: none;
-      float: right;
-      max-height: none;
     }
 
     &__tab {
@@ -180,6 +212,20 @@
     &__menu-icon {
       display: none;
     }
+  }
+}
+
+.icon-down-open {
+  position: absolute;
+  margin-left: 10px;
+  -moz-transition: all 300ms linear;
+  -webkit-transition: all 300ms linear;
+  transition: all 200ms linear;
+
+  &--down {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
   }
 }
 

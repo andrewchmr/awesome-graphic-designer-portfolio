@@ -1,6 +1,5 @@
 import React from "react";
 import './Footer.scss';
-import '../../fontello-f8a6cfaf/css/fontello.css';
 
 export const Footer = () => {
     return <footer className='Footer'>
