@@ -44,9 +44,9 @@ const App: React.FC = () => {
         <Router>
             <Helmet>
                 <meta name="description" content="The work of Ukrainian artist, Vernal Bloom."/>
-                <meta name="og:description" content="The work of Ukrainian artist, Vernal Bloom."/>
+                <meta property="og:description" content="The work of Ukrainian artist, Vernal Bloom."/>
                 <meta name="image" content="https://vernal-bloom.com/android-chrome-512x512.png"/>
-                <meta name="og:image" content="https://vernal-bloom.com/android-chrome-512x512.png"/>
+                <meta property="og:image" content="https://vernal-bloom.com/android-chrome-512x512.png"/>
             </Helmet>
             <Header/>
             <Main>
