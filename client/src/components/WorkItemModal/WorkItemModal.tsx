@@ -43,6 +43,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
         useBodyClass(`modal--open`);
         const awesomeSlider = useRef<IAwesomeSlider>(null);
         const [title, setTitle] = useState('Vernal Bloom');
+        const [thumbnailUrl, setThumbnailUrl] = useState('');
 
         useEffect(() => {
             const handleKeyboardEvent = (event: KeyboardEvent) => {
@@ -72,6 +73,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             const url = currentCategory ? `/${currentCategory}` : '/work';
             history.push(`${url}/${toSeoUrl(imageName)}`);
             setTitle(`${imageName} — Vernal Bloom`);
+            setThumbnailUrl(currentWorkItem.thumbnail);
         };
 
         const isAwesomeSliderLoaded = () => awesomeSlider.current && awesomeSlider.current.state.index !== null;
@@ -102,6 +104,8 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
                 <title>{title}</title>
                 <meta name="description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
                 <meta name="og:description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
+                {thumbnailUrl && <meta name="image" content={thumbnailUrl}/>}
+                {thumbnailUrl && <meta name="og:image" content={thumbnailUrl}/>}
             </Helmet>
             <AwesomeSlider startupScreen={<StartUpScreen/>}
                            startupDelay={600}
