@@ -101,6 +101,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             <Helmet>
                 <title>{title}</title>
                 <meta name="description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
+                <meta name="og:description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
             </Helmet>
             <AwesomeSlider startupScreen={<StartUpScreen/>}
                            startupDelay={600}
