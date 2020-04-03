@@ -4,6 +4,7 @@ const config = require('config');
 const path = require('path');
 const workRoutes = require('./routes/works');
 const cloudinary = require('cloudinary').v2;
+const sslRedirect = require('heroku-ssl-redirect');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -14,6 +15,7 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET || config.get('cloudApiSecret')
 });
 
+app.use(sslRedirect());
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json({extended: true}));
 app.use(workRoutes);
