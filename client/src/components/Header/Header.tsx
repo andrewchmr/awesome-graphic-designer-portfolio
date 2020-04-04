@@ -48,7 +48,7 @@ export const Header = () => {
 
     const handleLogoClick = () => {
         scrollTop();
-        handleTabClick();
+        hideAllMenus();
     };
 
     const getIconDownOpenClass = () => {
