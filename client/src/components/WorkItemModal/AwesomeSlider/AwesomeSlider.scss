@@ -26,21 +26,67 @@
 
 .awssld__controls {
   --organic-arrow-color: #ffffff;
-}
 
-@media (max-width: $breakpoint-tablet-landscape - 1) {
-  .awssld__controls {
+  @media (max-width: $breakpoint-tablet-landscape - 1) {
     visibility: hidden !important;
   }
 }
 
-.awssld__bullets {
-  bottom: 25px !important;
-  z-index: 10 !important;
-}
 
-.awssld__bullets button {
-  width: 8px !important;
-  height: 8px !important;
-  background-color: white !important;
+.awssld__bullets {
+  bottom: 40px !important;
+  z-index: 10 !important;
+  justify-content: unset !important;
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100%;
+  margin: auto;
+  list-style: none;
+  text-align: center;
+
+  &--micro {
+    transform: scale(0.5);
+  }
+
+  &-list {
+    padding: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    margin: 0;
+  }
+
+  &-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  & button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    width: 8px !important;
+    height: 8px !important;
+    background: white !important;
+    margin: 3px !important;
+
+    &:before {
+      -webkit-transition: font-size .35s;
+      -o-transition: font-size .35s;
+      transition: font-size .35s;
+      font-size: 12px;
+      content: "\2022";
+    }
+  }
 }

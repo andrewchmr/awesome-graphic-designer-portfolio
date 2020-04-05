@@ -14,15 +14,19 @@ import './AwesomeSlider/AwesomeSlider.scss';
 import {Helmet} from "react-helmet";
 import {StartUpScreen} from "./StartUpScreen/StartUpScreen";
 import {Category} from "../../App";
+import {Bullets} from "./Bullets/Bullets";
 
-interface IAwesomeSlider extends AwesomeSlider {
+export interface IAwesomeSlider extends AwesomeSlider {
     clickPrev: () => void,
     clickNext: () => void,
+    bulletClick: any,
     state: {
         index: number
     },
     slider: HTMLElement
 }
+
+export const MAX_BULLETS_COUNT = 5;
 
 const getItemByFileName = (list: WorkItem[]): WorkItem => {
     const url = window.location.pathname;
@@ -43,7 +47,9 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
         useBodyClass(`modal--open`);
         const awesomeSlider = useRef<IAwesomeSlider>(null);
         const [title, setTitle] = useState('Vernal Bloom');
-        const [thumbnailUrl, setThumbnailUrl] = useState('');
+        const [minIndex, setMinIndex] = useState(0);
+        const [maxIndex, setMaxIndex] = useState(4);
+        const [bulletsCount, setBulletsCount] = useState(MAX_BULLETS_COUNT);
 
         useEffect(() => {
             const handleKeyboardEvent = (event: KeyboardEvent) => {
@@ -63,6 +69,46 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             return () => window.removeEventListener('keydown', handleKeyboardEvent);
         }, [history]);
 
+        useEffect(() => {
+            const id = workItemList.indexOf(getItemByFileName(workItemList));
+            const listLength = workItemList.length;
+            if (listLength > 0 && listLength < MAX_BULLETS_COUNT) {
+                setBulletsCount(listLength);
+            }
+            if (id > 1 && id < listLength - 2) {
+                setMinIndex(id - 2);
+                setMaxIndex(id + 2);
+            }
+            if (id >= listLength - 2) {
+                setMinIndex(listLength - bulletsCount - 1);
+                setMaxIndex(id - 1);
+            }
+        }, [workItemList, bulletsCount]);
+
+        const updateBullets = () => {
+            const id = getCurrentId();
+            if (id !== undefined) {
+                if (id >= workItemList.length - 1) {
+                    setMinIndex(workItemList.length - bulletsCount);
+                    setMaxIndex(id);
+                    return;
+                }
+                if (id <= 1) {
+                    setMinIndex(0);
+                    setMaxIndex(bulletsCount - 1);
+                    return;
+                }
+                if (id < minIndex + 1) {
+                    setMaxIndex(maxIndex - 1);
+                    setMinIndex(id - 1);
+                }
+                if (id > maxIndex - 1) {
+                    setMinIndex(minIndex + 1);
+                    setMaxIndex(id + 1);
+                }
+            }
+        };
+
         const handleTransitionEnd = ({currentIndex}: { currentIndex: number }) => {
             const currentWorkItem = workItemList[currentIndex];
             if (awesomeSlider.current) {
@@ -73,7 +119,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             const url = currentCategory ? `/${currentCategory}` : '/work';
             history.push(`${url}/${toSeoUrl(imageName)}`);
             setTitle(`${imageName} — Vernal Bloom`);
-            setThumbnailUrl(currentWorkItem.thumbnail);
+            updateBullets();
         };
 
         const isAwesomeSliderLoaded = () => awesomeSlider.current && awesomeSlider.current.state.index !== null;
@@ -103,18 +149,21 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             <Helmet>
                 <title>{title}</title>
                 <meta name="description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
-                <meta property="og:description" content={`${title}. The work of Ukrainian artist, Vernal Bloom.`}/>
-                {thumbnailUrl && <meta name="image" content={thumbnailUrl}/>}
-                {thumbnailUrl && <meta property="og:image" content={thumbnailUrl}/>}
             </Helmet>
             <AwesomeSlider startupScreen={<StartUpScreen/>}
                            startupDelay={600}
                            ref={awesomeSlider}
                            selected={getCurrentId()}
                            fillParent={true}
-                           bullets={isAwesomeSliderLoaded() as boolean}
+                           bullets={false}
                            onTransitionEnd={handleTransitionEnd}
-                           cssModule={AwesomeSliderStyles}>
+                           cssModule={AwesomeSliderStyles}
+                           customContent={isAwesomeSliderLoaded() &&
+                           <Bullets workItemList={workItemList}
+                                    minIndex={minIndex}
+                                    maxIndex={maxIndex}
+                                    bulletsCount={bulletsCount}
+                                    awesomeSlider={awesomeSlider}/>}>
                 {workItemList.map((workItem: WorkItem) =>
                     <div key={workItem._id}
                          data-alt={`Vernal Bloom - ${workItem.title}`}
