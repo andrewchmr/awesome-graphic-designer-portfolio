@@ -70,7 +70,7 @@
   animation-fill-mode: backwards;
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (min-width: $breakpoint-tablet-landscape) {
   .WorkItem {
     &__image-wrap:hover &__desc-overlay {
       opacity: 1;
