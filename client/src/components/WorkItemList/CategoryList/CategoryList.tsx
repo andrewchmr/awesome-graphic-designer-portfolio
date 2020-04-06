@@ -20,7 +20,7 @@ export const CategoryList = () => {
         <li className={'CategoryList__wrapper'}>
             <NavLink exact to={'/logotype'}
                      className={'CategoryList__category'}
-                     activeClassName="CategoryList__category--active">logotype</NavLink>
+                     activeClassName="CategoryList__category--active">logo</NavLink>
         </li>
     </ul>;
 };

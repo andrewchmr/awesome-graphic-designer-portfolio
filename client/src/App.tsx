@@ -71,7 +71,7 @@ const App: React.FC = () => {
                     </Route>
                     <Route exact path={`/logotype`}>
                         <Helmet>
-                            <title>Logotype — Vernal Bloom</title>
+                            <title>Logo — Vernal Bloom</title>
                         </Helmet>
                         <WorkItemList workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
                                       currentCategory={Category.LOGOTYPE}/>
