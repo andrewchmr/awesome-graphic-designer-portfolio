@@ -37,13 +37,15 @@
   }
 }
 
-@media (min-width: $breakpoint-tablet) {
+@media (min-width: $breakpoint-tablet-landscape) {
   .CloseButton {
     z-index: 1000;
     padding: 20px;
     position: relative;
     width: 50px;
     height: 50px;
+    right: 40px;
+    margin-top: 15px;
     margin-left: auto;
     cursor: pointer;
     opacity: 0.5;
@@ -80,12 +82,5 @@
       border-radius: 2px;
       transition: all .3s ease-in;
     }
-  }
-}
-
-@media (min-width: $breakpoint-desktop) {
-  .CloseButton {
-    right: 40px;
-    margin-top: 15px;
   }
 }
