@@ -38,15 +38,22 @@
 
 
 .awssld__bullets {
-  bottom: 40px !important;
+  bottom: 40px;
   z-index: 10 !important;
-  justify-content: unset !important;
+  justify-content: start;
   position: relative !important;
   overflow: hidden !important;
-  width: 100%;
   margin: auto;
   list-style: none;
   text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    bottom: 35px;
+  }
+
+  @media (min-width: $breakpoint-large-desktop) {
+    bottom: 50px;
+  }
 
   &--micro {
     transform: scale(0.5);
@@ -83,7 +90,7 @@
     width: 8px !important;
     height: 8px !important;
     background: white !important;
-    margin: 3px !important;
+    margin: 3.5px !important;
 
     &:before {
       -webkit-transition: font-size .35s;
