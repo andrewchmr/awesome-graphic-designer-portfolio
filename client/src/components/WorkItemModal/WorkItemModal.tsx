@@ -141,7 +141,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
                 case Category.BITMAP:
                     return '/bitmap-graphic';
                 case Category.LOGOTYPE:
-                    return '/logotype';
+                    return '/logo';
             }
         };
 

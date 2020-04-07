@@ -18,7 +18,7 @@ export const CategoryList = () => {
                      activeClassName="CategoryList__category--active">bitmap
                 graphic</NavLink></li>
         <li className={'CategoryList__wrapper'}>
-            <NavLink exact to={'/logotype'}
+            <NavLink exact to={'/logo'}
                      className={'CategoryList__category'}
                      activeClassName="CategoryList__category--active">logo</NavLink>
         </li>

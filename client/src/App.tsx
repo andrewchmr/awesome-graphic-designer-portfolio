@@ -15,7 +15,7 @@ export enum Category {
     ALL,
     VECTOR = 'vector',
     BITMAP = 'bitmap',
-    LOGOTYPE = 'logotype'
+    LOGOTYPE = 'logo'
 }
 
 const App: React.FC = () => {
@@ -69,7 +69,7 @@ const App: React.FC = () => {
                         <WorkItemList workItemList={getWorkItemsByCategory(Category.BITMAP)}
                                       currentCategory={Category.BITMAP}/>
                     </Route>
-                    <Route exact path={`/logotype`}>
+                    <Route exact path={`/logo`}>
                         <Helmet>
                             <title>Logo — Vernal Bloom</title>
                         </Helmet>
@@ -87,7 +87,7 @@ const App: React.FC = () => {
                         <WorkItemModal workItemList={getWorkItemsByCategory(Category.BITMAP)}
                                        currentCategory={Category.BITMAP}/>
                     </Route>
-                    <Route path={`/logotype/:fileName`}>
+                    <Route path={`/logo/:fileName`}>
                         <WorkItemModal workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
                                        currentCategory={Category.LOGOTYPE}/>
                     </Route>

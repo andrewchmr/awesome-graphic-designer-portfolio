@@ -35,7 +35,7 @@ export const HeaderCategoryMenu = ({show, handleTabClick, isWorkTabActive}: Head
                      activeClassName="HeaderCategoryMenu__link--active">bitmap graphic</NavLink>
         </li>
         <li className={'Header__tab'} onClick={handleTabClick}>
-            <NavLink exact to={'/logotype'} onClick={scrollTop}
+            <NavLink exact to={'/logo'} onClick={scrollTop}
                      className={getLinkCategoryClassname()}
                      activeClassName="HeaderCategoryMenu__link--active">logo</NavLink>
         </li>

@@ -27,7 +27,7 @@ export const Header = () => {
     });
 
     const isWorkTabActive = () => {
-        const workTabs = ['/', '/vector-graphic', '/bitmap-graphic', '/logotype'];
+        const workTabs = ['/', '/vector-graphic', '/bitmap-graphic', '/logo'];
         return workTabs.includes(window.location.pathname);
     };
 
