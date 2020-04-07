@@ -46,66 +46,70 @@ const App: React.FC = () => {
                 <meta name="description" content="The work of Ukrainian artist, Vernal Bloom."/>
                 <meta name="image" content="https://vernal-bloom.com/android-chrome-512x512.png"/>
             </Helmet>
-            <Header/>
-            <Main>
-                <Switch>
-                    <Route exact path={`/`}>
-                        <Helmet>
-                            <title>Vernal Bloom</title>
-                        </Helmet>
-                        <WorkItemList workItemList={workItems} currentCategory={Category.ALL}/>
-                    </Route>
-                    <Route exact path={`/vector-graphic`}>
-                        <Helmet>
-                            <title>Vector Graphic — Vernal Bloom</title>
-                        </Helmet>
-                        <WorkItemList workItemList={getWorkItemsByCategory(Category.VECTOR)}
-                                      currentCategory={Category.VECTOR}/>
-                    </Route>
-                    <Route exact path={`/bitmap-graphic`}>
-                        <Helmet>
-                            <title>Bitmap Graphic — Vernal Bloom</title>
-                        </Helmet>
-                        <WorkItemList workItemList={getWorkItemsByCategory(Category.BITMAP)}
-                                      currentCategory={Category.BITMAP}/>
-                    </Route>
-                    <Route exact path={`/logo`}>
-                        <Helmet>
-                            <title>Logo — Vernal Bloom</title>
-                        </Helmet>
-                        <WorkItemList workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
-                                      currentCategory={Category.LOGOTYPE}/>
-                    </Route>
-                    <Route path={`/work/:fileName`}>
-                        <WorkItemModal workItemList={workItems} currentCategory={Category.ALL}/>
-                    </Route>
-                    <Route path={`/vector/:fileName`}>
-                        <WorkItemModal workItemList={getWorkItemsByCategory(Category.VECTOR)}
-                                       currentCategory={Category.VECTOR}/>
-                    </Route>
-                    <Route path={`/bitmap/:fileName`}>
-                        <WorkItemModal workItemList={getWorkItemsByCategory(Category.BITMAP)}
-                                       currentCategory={Category.BITMAP}/>
-                    </Route>
-                    <Route path={`/logo/:fileName`}>
-                        <WorkItemModal workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
-                                       currentCategory={Category.LOGOTYPE}/>
-                    </Route>
-                    <Route path="/about">
-                        <Helmet>
-                            <title>About — Vernal Bloom</title>
-                        </Helmet>
-                        <About/>
-                    </Route>
-                    <Route path="*">
-                        <Helmet>
-                            <title>Page not found — Vernal Bloom</title>
-                        </Helmet>
-                        <NoMatch/>
-                    </Route>
-                </Switch>
-            </Main>
-            <Footer/>
+            <Switch>
+                <Route path={`/work/:fileName`}>
+                    <WorkItemModal workItemList={workItems} currentCategory={Category.ALL}/>
+                </Route>
+                <Route path={`/vector/:fileName`}>
+                    <WorkItemModal workItemList={getWorkItemsByCategory(Category.VECTOR)}
+                                   currentCategory={Category.VECTOR}/>
+                </Route>
+                <Route path={`/bitmap/:fileName`}>
+                    <WorkItemModal workItemList={getWorkItemsByCategory(Category.BITMAP)}
+                                   currentCategory={Category.BITMAP}/>
+                </Route>
+                <Route path={`/logo/:fileName`}>
+                    <WorkItemModal workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
+                                   currentCategory={Category.LOGOTYPE}/>
+                </Route>
+                <Route>
+                    <Header/>
+                    <Main>
+                        <Switch>
+                            <Route exact path={`/`}>
+                                <Helmet>
+                                    <title>Vernal Bloom</title>
+                                </Helmet>
+                                <WorkItemList workItemList={workItems} currentCategory={Category.ALL}/>
+                            </Route>
+                            <Route exact path={`/vector-graphic`}>
+                                <Helmet>
+                                    <title>Vector Graphic — Vernal Bloom</title>
+                                </Helmet>
+                                <WorkItemList workItemList={getWorkItemsByCategory(Category.VECTOR)}
+                                              currentCategory={Category.VECTOR}/>
+                            </Route>
+                            <Route exact path={`/bitmap-graphic`}>
+                                <Helmet>
+                                    <title>Bitmap Graphic — Vernal Bloom</title>
+                                </Helmet>
+                                <WorkItemList workItemList={getWorkItemsByCategory(Category.BITMAP)}
+                                              currentCategory={Category.BITMAP}/>
+                            </Route>
+                            <Route exact path={`/logo`}>
+                                <Helmet>
+                                    <title>Logo — Vernal Bloom</title>
+                                </Helmet>
+                                <WorkItemList workItemList={getWorkItemsByCategory(Category.LOGOTYPE)}
+                                              currentCategory={Category.LOGOTYPE}/>
+                            </Route>
+                            <Route path="/about">
+                                <Helmet>
+                                    <title>About — Vernal Bloom</title>
+                                </Helmet>
+                                <About/>
+                            </Route>
+                            <Route path="*">
+                                <Helmet>
+                                    <title>Page not found — Vernal Bloom</title>
+                                </Helmet>
+                                <NoMatch/>
+                            </Route>
+                        </Switch>
+                    </Main>
+                    <Footer/>
+                </Route>
+            </Switch>
         </Router>
     );
 };
