@@ -10,7 +10,6 @@ import {Helmet} from "react-helmet";
 import {WorkItemModal} from "./components/WorkItemModal/WorkItemModal";
 import {WorkItem} from "./components/WorkItemList/WorkItem/WorkItem";
 
-// TODO: use better namings
 export enum Category {
     ALL,
     VECTOR = 'vector',
@@ -28,16 +27,7 @@ const App: React.FC = () => {
     }, []);
 
     const getWorkItemsByCategory = (currentCategory: Category) => {
-        switch (currentCategory) {
-            case Category.ALL:
-                return workItems;
-            case Category.VECTOR:
-                return workItems.filter((item => item.category === Category.VECTOR));
-            case Category.BITMAP:
-                return workItems.filter((item => item.category === Category.BITMAP));
-            case Category.LOGOTYPE:
-                return workItems.filter((item => item.category === Category.LOGOTYPE));
-        }
+        return workItems.filter(item => item.category === currentCategory);
     };
 
     return (
@@ -96,6 +86,8 @@ const App: React.FC = () => {
                             <Route path="/about">
                                 <Helmet>
                                     <title>About — Vernal Bloom</title>
+                                    <meta name="description" content="I am a Ukrainian artist based in Poland. I have been studying visual arts for 5 years and chose graphic
+                design as my specialization. I started drawing in the early childhood as it was my biggest passion."/>
                                 </Helmet>
                                 <About/>
                             </Route>
