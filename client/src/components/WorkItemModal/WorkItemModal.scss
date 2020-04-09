@@ -10,6 +10,7 @@
   &__image-title {
     letter-spacing: 4px;
     text-transform: uppercase;
+    animation: entrance 500ms ease;
     font-size: 19px;
     z-index: 100;
     position: relative;
