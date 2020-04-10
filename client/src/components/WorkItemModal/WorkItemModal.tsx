@@ -55,7 +55,7 @@ export const WorkItemModal = ({workItemList, currentCategory}: { workItemList: W
             const handleKeyboardEvent = (event: KeyboardEvent) => {
                 switch (event.code) {
                     case 'Escape':
-                        history.push(`/`);
+                        history.push(getExitUrl());
                         break;
                     case 'ArrowLeft':
                         awesomeSlider.current && awesomeSlider.current.clickPrev();
