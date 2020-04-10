@@ -7,7 +7,7 @@ export const About = () => {
             <img className={'About__image'} alt="Vernal Bloom - Self Portrait"
                  src="https://res.cloudinary.com/htn4pmlv5/image/upload/c_scale,w_800/v1584045962/ox0uy637qddzbljthihx.jpg"/>
             <div className={'About__desc'}>
-            <span>I am a Ukrainian artist based in Poland. I have been studying visual arts for 5 years and chose graphic
+            <span className={'About__desc-bio'}>I am a Ukrainian artist based in Poland. I have been studying visual arts for 5 years and chose graphic
                 design as my specialization. I started drawing in the early childhood as it was my biggest passion.
                 Since
                 than I wanted to develop my skills, tried new techniques and switched from traditional art to digital
