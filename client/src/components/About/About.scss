@@ -45,9 +45,10 @@
   @media (min-width: $breakpoint-tablet-landscape) {
     font-size: 18px;
     padding: 20px;
+    margin-top: 60px;
 
     &__image {
-      max-width: 350px;
+      max-width: 35vh;
       object-fit: contain;
       margin-right: 20px;
     }
@@ -59,14 +60,6 @@
     &__contact {
       position: absolute;
       bottom: 0;
-    }
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    margin-top: 60px;
-
-    &__image {
-      max-width: 400px;
     }
   }
 
