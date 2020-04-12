@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {Header} from "./components/Header/Header";
 import {Footer} from "./components/Footer/Footer";
 import {Main} from "./components/Main/Main";
-import {BrowserRouter as Router, Route, Switch,} from "react-router-dom";
+import {Router, Route, Switch,} from "react-router-dom";
 import {About} from "./components/About/About";
 import {WorkItemList} from "./components/WorkItemList/WorkItemList";
 import NoMatch from "./components/NoMatch/NoMatch";
 import {Helmet} from "react-helmet";
 import {WorkItemModal} from "./components/WorkItemModal/WorkItemModal";
 import {WorkItem} from "./components/WorkItemList/WorkItem/WorkItem";
+import ReactGA from 'react-ga';
+import {createBrowserHistory} from 'history';
 
 export enum Category {
     ALL,
@@ -16,6 +18,13 @@ export enum Category {
     BITMAP = 'bitmap',
     LOGOTYPE = 'logo'
 }
+
+const history = createBrowserHistory();
+
+history.listen(location => {
+    ReactGA.set({page: location.pathname});
+    ReactGA.pageview(location.pathname);
+});
 
 const App: React.FC = () => {
     const [workItems, setWorkItems] = useState<WorkItem[]>([]);
@@ -26,12 +35,20 @@ const App: React.FC = () => {
             .then((data: WorkItem[]) => setWorkItems(data))
     }, []);
 
+    useEffect(() => {
+        initializeReactGA()
+    }, []);
+
+    const initializeReactGA = () => {
+        ReactGA.initialize('UA-150290652-2');
+    };
+
     const getWorkItemsByCategory = (currentCategory: Category) => {
         return workItems.filter(item => item.category === currentCategory);
     };
 
     return (
-        <Router>
+        <Router history={history}>
             <Helmet>
                 <meta name="description" content="The work of Ukrainian artist, Vernal Bloom."/>
                 <meta name="image" content="https://vernal-bloom.com/android-chrome-512x512.png"/>
