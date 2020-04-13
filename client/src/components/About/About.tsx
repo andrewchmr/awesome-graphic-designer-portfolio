@@ -25,7 +25,7 @@ export const About = () => {
         </div>
         <p className={'About__author-desc'}>Website by <a target="_blank" rel="noopener noreferrer"
                                                           className={'About__email'}
-                                                          href='https://github.com/andrewchmr'>@andrewchmr</a>
+                                                          href='https://www.linkedin.com/in/andriy-chemerynskiy-9a4430139/'>@andrewchmr</a>
         </p>
     </div>
 };
