@@ -39,11 +39,11 @@ router.post(
 
             const token = jwt.sign(
                 {userId: user.id},
-                config.get('jwtSecret'),
+                process.env.JWT_SECRET || config.get('jwtSecret'),
                 {expiresIn: '1h'}
             );
 
-            res.json({token, userId: user.id})
+            await res.json({token, userId: user.id})
 
         } catch (e) {
             res.status(500).json({message: 'Something went wrong, try again'})
