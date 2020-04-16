@@ -1,9 +1,11 @@
-const {uploader, url} = require('cloudinary').v2;
+const {uploader, api} = require('cloudinary').v2;
 const {Router} = require('express');
 const Work = require('../models/Work');
 const router = Router();
 const multer = require('multer');
 const auth = require('../middleware/auth.middleware');
+
+const url = '/api/works/';
 
 const storage = multer.diskStorage({
     filename: function (req, file, cb) {
@@ -27,6 +29,10 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
+const getCloudPublicId = (url) => {
+    return url.match(/[^\/]*$/)[0].replace(/\.[^/.]+$/, "");
+};
+
 function getColor(colors) {
     if (colors[0][0] === "#FFFFFF") {
         return colors[1][0];
@@ -35,11 +41,11 @@ function getColor(colors) {
     }
 }
 
-router.get('/api/works', async (req, res) => {
+router.get(url, async (req, res) => {
     await Work.find({}).sort({'_id': -1}).then(users => res.json(users));
 });
 
-router.post('/api/create', auth, upload.fields([
+router.post(url, auth, upload.fields([
     {name: 'image', maxCount: 1},
     {name: 'thumbnail', maxCount: 1}
 ]), async (req, res) => {
@@ -73,6 +79,35 @@ router.post('/api/create', auth, upload.fields([
 
     await work.save();
     res.redirect('/');
+});
+
+router.delete(`${url}:id`, auth, async (req, res) => {
+    const id = req.params.id;
+
+    const work = await Work.findById(id);
+    const publicIdImage = getCloudPublicId(work.image);
+    const publicIdThumbnail = getCloudPublicId(work.thumbnail);
+    await api.delete_resources([publicIdImage, publicIdThumbnail], function (error, result) {
+        console.log(result, error);
+    });
+
+    Work.findByIdAndRemove(id)
+        .then(async data => {
+            if (!data) {
+                res.status(404).send({
+                    message: `Cannot delete work with id=${id}. Maybe work was not found!`
+                });
+            } else {
+                res.send({
+                    message: "Work was deleted successfully!"
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Could not delete work with id=" + id
+            });
+        });
 });
 
 module.exports = router;
