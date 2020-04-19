@@ -66,7 +66,7 @@ router.get(`${url}/colors/:id`, async (req, res) => {
     }
 });
 
-router.put(`${url}/:id`, async (req, res) => {
+router.put(`${url}/:id`, auth, async (req, res) => {
     const id = req.params.id;
     const {title, category, color} = req.body;
     if(!(title && category && color)){
