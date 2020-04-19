@@ -5,7 +5,7 @@ const router = Router();
 const multer = require('multer');
 const auth = require('../middleware/auth.middleware');
 
-const url = '/api/works/';
+const url = '/api/works';
 
 const storage = multer.diskStorage({
     filename: function (req, file, cb) {
@@ -43,6 +43,42 @@ function getColor(colors) {
 
 router.get(url, async (req, res) => {
     await Work.find({}).sort({'_id': -1}).then(users => res.json(users));
+});
+
+router.get(`${url}/colors/:id`, async (req, res) => {
+    const id = req.params.id;
+    const work = await Work.findById(id);
+    const publicIdImage = getCloudPublicId(work.image);
+    try {
+        const data = await api.resource(publicIdImage,
+            {colors: true});
+        if (!data) {
+            res.status(404).send({
+                message: `Cannot find colors for image with public_id=${id}`
+            });
+        } else {
+            res.send(data.colors);
+        }
+    } catch (e) {
+        res.status(500).send({
+            message: "Could not get colors for work with id=" + id
+        });
+    }
+});
+
+router.put(`${url}/:id`, async (req, res) => {
+    const id = req.params.id;
+    const {title, category, color} = req.body;
+    if(!(title && category && color)){
+        return res.status(400).json({message: 'Wrong request body'})
+    }
+    await Work.findByIdAndUpdate(id, {title, category, color}, (err, result) => {
+        if (err) {
+            res.send(err)
+        } else {
+            res.send(result)
+        }
+    })
 });
 
 router.post(url, auth, upload.fields([
