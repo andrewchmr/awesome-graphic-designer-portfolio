@@ -14,13 +14,7 @@ const isLocalhost = Boolean(
 );
 
 if (!isLocalhost && 'serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/offline.js', {scope: '/'})
-        .then(() => {
-            console.log('Service Worker Registered');
-        });
-    navigator.serviceWorker.ready.then(() => {
-        console.log('Service Worker Ready');
-    });
+    navigator.serviceWorker.register('/offline.js', {scope: '/'});
 }
 
 ReactDOM.render(<App/>, document.getElementById('root'));
