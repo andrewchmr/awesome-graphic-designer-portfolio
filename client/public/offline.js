@@ -1,7 +1,6 @@
 const CACHE_NAME = 'vernal-bloom';
 
 self.addEventListener('install', e => {
-    console.log('installing service worker!!');
     e.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
             return cache.addAll([
@@ -15,7 +14,6 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', event => {
-    console.log('activating service worker');
     event.waitUntil(self.clients.claim());
 });
 
