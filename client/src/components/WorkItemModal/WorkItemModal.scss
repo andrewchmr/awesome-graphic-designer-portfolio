@@ -56,6 +56,8 @@
   & > img {
     width: auto !important;
     position: relative !important;
+    object-fit: contain !important;
+    height: auto !important;
     @extend .WorkItemModal__image;
   }
 }
