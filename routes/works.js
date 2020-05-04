@@ -117,7 +117,7 @@ router.post(url, auth, upload.fields([
     return res.status(200).json({message: 'Work successfully added!'})
 });
 
-router.delete(`${url}:id`, auth, async (req, res) => {
+router.delete(`${url}/:id`, auth, async (req, res) => {
     const id = req.params.id;
 
     const work = await Work.findById(id);
