@@ -69,7 +69,7 @@ router.get(`${url}/colors/:id`, async (req, res) => {
 router.put(`${url}/:id`, auth, async (req, res) => {
     const id = req.params.id;
     const {title, category, color} = req.body;
-    if(!(title && category && color)){
+    if (!(title && category && color)) {
         return res.status(400).json({message: 'Wrong request body'})
     }
     await Work.findByIdAndUpdate(id, {title, category, color}, (err, result) => {
@@ -114,7 +114,7 @@ router.post(url, auth, upload.fields([
     });
 
     await work.save();
-    res.redirect('/');
+    return res.status(200).json({message: 'Work successfully added!'})
 });
 
 router.delete(`${url}:id`, auth, async (req, res) => {
