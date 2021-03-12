@@ -54,7 +54,7 @@
     "react": "^16.14.0",
     "react-app-polyfill": "^1.0.6",
     "react-awesome-slider": "^4.1.0",
-    "react-dev-utils": "^10.2.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.14.0",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
